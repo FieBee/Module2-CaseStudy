@@ -3,14 +3,21 @@ package model.milk;
 import model.Products;
 
 public abstract class Milk extends Products {
-    private double volume;
 
-    public Milk(double volume) {
+    private int id;
+    private String name;
+    private int volume;
+
+    public Milk(int id, String name, int volume) {
+        this.id = id;
+        this.name = name;
         this.volume = volume;
     }
 
-    public Milk(String dateOfManufacturing, int cost, double volume) {
+    public Milk(String dateOfManufacturing, int cost, int id, String name, int volume) {
         super(dateOfManufacturing, cost);
+        this.id = id;
+        this.name = name;
         this.volume = volume;
     }
 
@@ -18,14 +25,16 @@ public abstract class Milk extends Products {
         return volume;
     }
 
-    public void setVolume(double volume) {
+    public void setVolume(int volume) {
         this.volume = volume;
     }
 
     @Override
     public String toString() {
         return "Milk{" +
-                "volume=" + volume +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", volume=" + volume +
                 "} " + super.toString();
     }
 }
