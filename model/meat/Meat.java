@@ -44,4 +44,13 @@ public abstract class Meat extends Products{
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", weight=" + weight +
+                "} " + super.toString();
+    }
 }

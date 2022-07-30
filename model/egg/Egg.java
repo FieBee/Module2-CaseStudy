@@ -15,7 +15,7 @@ public abstract class Egg extends Products {
    }
 
    public int getAmount() {
-      return amount;
+      return this.amount;
    }
 
    public void setAmount(int amount) {

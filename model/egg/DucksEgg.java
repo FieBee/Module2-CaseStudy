@@ -16,11 +16,11 @@ public class DucksEgg extends Egg implements Conditions {
 
     @Override
     public double getRealMoney() {
-        return 0;
+        return getAmount()*getCost();
     }
 
     @Override
     public LocalDate getShelfLife() {
-        return null;
+        return getDateOfManufacturing().plusDays(20);
     }
 }

@@ -16,12 +16,12 @@ public class Beef extends Meat implements Conditions {
 
     @Override
     public double getRealMoney() {
-        return 0;
+        return getWeight() * getCost();
     }
 
     @Override
     public LocalDate getShelfLife() {
-        return null;
+        return getDateOfManufacturing().plusDays(7);
     }
 
 

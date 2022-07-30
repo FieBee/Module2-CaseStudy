@@ -16,13 +16,16 @@ public class Pork extends Meat implements Conditions {
 
     @Override
     public double getRealMoney() {
-        return 0;
+        return getWeight() * getCost();
     }
 
     @Override
     public LocalDate getShelfLife() {
-        return null;
+        return getDateOfManufacturing().plusDays(5);
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
