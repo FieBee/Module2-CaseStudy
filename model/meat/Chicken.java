@@ -1,4 +1,4 @@
-package model.Meat;
+package model.meat;
 
 import model.Conditions;
 
@@ -6,15 +6,12 @@ import java.time.LocalDate;
 
 public class Chicken extends Meat implements Conditions {
 
-    private double weight;
     public Chicken(String id, String name, double weight) {
-        super(id, name);
-        this.weight = weight;
+        super(id, name, weight);
     }
 
     public Chicken(String dateOfManufacturing, int cost, String id, String name, double weight) {
-        super(dateOfManufacturing, cost, id, name);
-        this.weight = weight;
+        super(dateOfManufacturing, cost, id, name, weight);
     }
 
     @Override
@@ -27,18 +24,8 @@ public class Chicken extends Meat implements Conditions {
         return null;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
     @Override
     public String toString() {
-        return "Chicken{" +
-                "weight=" + weight +
-                "} " + super.toString();
+        return super.toString();
     }
 }

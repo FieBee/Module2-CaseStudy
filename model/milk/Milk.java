@@ -1,8 +1,6 @@
-package model.Milk;
+package model.milk;
 
 import model.Products;
-
-import java.time.LocalDate;
 
 public abstract class Milk extends Products {
 
