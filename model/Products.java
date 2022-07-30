@@ -1,8 +1,9 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public abstract class Products{
+public abstract class Products implements Serializable {
 
     private LocalDate dateOfManufacturing;
     private int cost;

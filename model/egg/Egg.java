@@ -2,7 +2,9 @@ package model.egg;
 
 import model.Products;
 
-public abstract class Egg extends Products {
+import java.io.Serializable;
+
+public abstract class Egg extends Products implements Serializable {
    private int amount;
 
    public Egg(int amount) {
@@ -20,5 +22,12 @@ public abstract class Egg extends Products {
 
    public void setAmount(int amount) {
       this.amount = amount;
+   }
+
+   @Override
+   public String toString() {
+      return "Egg{" +
+              "amount=" + amount +
+              "} " + super.toString();
    }
 }

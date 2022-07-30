@@ -2,7 +2,9 @@ package model.meat;
 
 import model.Products;
 
-public abstract class Meat extends Products{
+import java.io.Serializable;
+
+public abstract class Meat extends Products implements Serializable {
 
     private int id;
     private String name;

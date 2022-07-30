@@ -2,9 +2,10 @@ package model.egg;
 
 import model.Conditions;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class ChickenEgg extends Egg implements Conditions {
+public class ChickenEgg extends Egg implements Conditions, Serializable {
 
     public ChickenEgg(int amount) {
         super(amount);
@@ -22,5 +23,10 @@ public class ChickenEgg extends Egg implements Conditions {
     @Override
     public LocalDate getShelfLife() {
         return getDateOfManufacturing().plusDays(30);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -2,9 +2,10 @@ package model.meat;
 
 import model.Conditions;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Chicken extends Meat implements Conditions {
+public class Chicken extends Meat implements Conditions, Serializable {
 
     public Chicken(int id,String name, double weight ) {
 

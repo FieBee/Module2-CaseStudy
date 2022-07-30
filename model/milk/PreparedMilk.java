@@ -2,9 +2,10 @@ package model.milk;
 
 import model.Conditions;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PreparedMilk extends Milk implements Conditions {
+public class PreparedMilk extends Milk implements Conditions, Serializable {
 
     public PreparedMilk(int id, String name, int volume) {
         super(id, name, volume);
