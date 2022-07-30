@@ -2,49 +2,26 @@ package model;
 
 import java.time.LocalDate;
 
-public abstract class Products implements Discount{
+public abstract class Products{
 
-    private String id;
-    private String name;
-    private LocalDate manufactoring;
+
+    private LocalDate dateOfManufacturing;
     private int cost;
 
     public Products(){}
 
-    public Products(String id, String name, LocalDate manufactoring, int cost) {
-        this.id = id;
-        this.name = name;
-        this.manufactoring = manufactoring;
+    public Products(String dateOfManufacturing, int cost) {
+        this.dateOfManufacturing = LocalDate.parse(dateOfManufacturing);
         this.cost = cost;
     }
 
-    @Override
-    public double getRealMoney() {
-        return 0;
+
+    public LocalDate getDateOfManufacturing() {
+        return dateOfManufacturing;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getManufactoring() {
-        return manufactoring;
-    }
-
-    public void setManufactoring(LocalDate manufactoring) {
-        this.manufactoring = manufactoring;
+    public void setManufacturing(LocalDate manufacturing) {
+        this.dateOfManufacturing = manufacturing;
     }
 
     public int getCost() {
@@ -57,10 +34,8 @@ public abstract class Products implements Discount{
 
     @Override
     public String toString() {
-        return "Product{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", manufactoring=" + manufactoring +
+        return "Products{" +
+                "dateOfManufacturing=" + dateOfManufacturing +
                 ", cost=" + cost +
                 '}';
     }
