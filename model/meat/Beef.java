@@ -6,11 +6,14 @@ import java.time.LocalDate;
 
 public class Beef extends Meat implements Conditions {
 
-    public Beef(String id, String name, double weight) {
+    public Beef() {
+    }
+
+    public Beef(int id, String name, double weight) {
         super(id, name, weight);
     }
 
-    public Beef(String dateOfManufacturing, int cost, String id, String name, double weight) {
+    public Beef(String dateOfManufacturing, int cost, int id, String name, double weight) {
         super(dateOfManufacturing, cost, id, name, weight);
     }
 

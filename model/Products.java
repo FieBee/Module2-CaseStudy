@@ -4,9 +4,10 @@ import java.time.LocalDate;
 
 public abstract class Products{
 
-
     private LocalDate dateOfManufacturing;
     private int cost;
+
+    public static int stt = 0;
 
     public Products(){}
 

@@ -6,12 +6,17 @@ import java.time.LocalDate;
 
 public class Chicken extends Meat implements Conditions {
 
-    public Chicken(String id, String name, double weight) {
-        super(id, name, weight);
+    public Chicken(int id,String name, double weight ) {
+
+        super( name, weight);
+
     }
 
-    public Chicken(String dateOfManufacturing, int cost, String id, String name, double weight) {
+    public Chicken(String dateOfManufacturing, int cost, int id, String name, double weight) {
         super(dateOfManufacturing, cost, id, name, weight);
+    }
+
+    public Chicken() {
     }
 
     @Override

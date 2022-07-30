@@ -4,29 +4,34 @@ import model.Products;
 
 public abstract class Meat extends Products{
 
-    private String id;
+    private int id;
     private String name;
     private double weight;
 
-    public Meat(String id, String name, double weight) {
+    public Meat(){}
+
+    public Meat(int id, String name, double weight) {
         this.id = id;
         this.name = name;
         this.weight = weight;
     }
 
-    public Meat(String dateOfManufacturing, int cost, String id, String name, double weight) {
+    public Meat(String dateOfManufacturing, int cost, int id, String name, double weight) {
         super(dateOfManufacturing, cost);
         this.id = id;
         this.name = name;
         this.weight = weight;
     }
 
-    public String getId() {
-        return id;
+    public Meat(String name, double weight) {
+        this.name = name;
+        this.weight = weight;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Meat(String dateOfManufacturing, int cost, String name, double weight) {
+        super(dateOfManufacturing, cost);
+        this.name = name;
+        this.weight = weight;
     }
 
     public String getName() {
@@ -48,9 +53,9 @@ public abstract class Meat extends Products{
     @Override
     public String toString() {
         return "Meat{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", weight=" + weight +
+                "id ='" + id + '\'' +
+                ", name ='" + name + '\'' +
+                ", weight =" + weight +
                 "} " + super.toString();
     }
 }
