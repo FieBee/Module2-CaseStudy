@@ -9,18 +9,23 @@ public abstract class Meat extends Products{
 
     private String id;
     private String name;
-    private double weight;
 
-    public Meat(String id, String name, double weight) {
+    public Meat(String id, String name) {
         this.id = id;
         this.name = name;
-        this.weight = weight;
     }
 
-    public Meat(String dateOfManufacturing, int cost, String id, String name, double weight) {
+    public Meat(String dateOfManufacturing, int cost, String id, String name) {
         super(dateOfManufacturing, cost);
         this.id = id;
         this.name = name;
-        this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                "} " + super.toString();
     }
 }
