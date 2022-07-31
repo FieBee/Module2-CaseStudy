@@ -22,4 +22,9 @@ public class ProductManager {
         readWriteData.writeData(productsList);
     }
 
+    public void deleteProductByIndex(int index){
+        productsList.remove(index);
+        readWriteData.writeData(productsList);
+    }
+
 }

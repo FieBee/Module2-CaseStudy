@@ -20,7 +20,7 @@ import java.util.Scanner;
 
 public class Client {
 
-    public static final String SUCCESSFUL_NEW_CREATION = "Tạo mới thành công!! ";
+    public static final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     static ProductManager productManager = new ProductManager();
     public static void main(String[] args) {
@@ -29,45 +29,20 @@ public class Client {
 
         Products products = creatNewMeatProduct();
         productManager.addProduct(products);
+        Products product1 = creatNewEggProduct();
+        productManager.addProduct(product1);
 
-//        System.out.println(productManager);
-//
-//        Products product = creatNewEggProduct();
-//        productManager.addProduct(product);
+        for (Products ob: productManager.productsList
+        ) {
+            System.out.println(ob);
+        };
+        editProductByIndex(0);
 
-//        Scanner input = new Scanner(System.in);
-//        int selectOption;
-//        do {
-//            System.out.println("------------------------------");
-//            System.out.println("Chọn thao tác: ");
-//            System.out.println("   1. Thêm sản phẩm");
-//            System.out.println("   2. Sửa thông tin sản phẩm theo id.");
-//            System.out.println("   3. Xoá sản phẩm theo id.");
-//            System.out.println("   4. Hiển thị danh sách sản phẩm.");
-//            System.out.println("   5. Thông tin chiết khấu chênh lệch. ");
-//            System.out.println("   0. Thoát khỏi chương trình. ");
-//            System.out.println("------------------------------");
-//            selectOption = input.nextInt();
-//
-//            switch (selectOption){
-//                case 0:
-//                    System.out.println("Bye!");
-//                    return;
-//                case 1:
-//                    System.out.println("Chọn thao tác");
-//                    System.out.println("1. Thêm sản phẩm meat");
-//                    System.out.println("2. Thêm sản phẩm CispyFlour");
-//                    int option = input.nextInt();
-//
-////                    switch (option){
-////
-////                    }
-//                default:
-//                    System.out.println("Tính năng chưa phát triển...!");
-//            }
-//        }while(true) ;
 
-//
+        for (Products ob: productManager.productsList
+             ) {
+            System.out.println(ob);
+        };
 
     }
 
@@ -87,7 +62,6 @@ public class Client {
                     System.out.println("Thao tac sai! Vui long nhap lai..");
                     continue;
                 }
-
 
                 Scanner input1 = new Scanner(System.in);
 
@@ -224,51 +198,104 @@ public class Client {
         }
     }
 
-    public static void editProductByIndex(int index){
-        Scanner input = new Scanner(System.in);
-        Scanner input1 = new Scanner(System.in);
+//    public static void editProductByIndex(int index) {
+//        Scanner input = new Scanner(System.in);
+//        Scanner input1 = new Scanner(System.in);
+//
+//        Products objectCorrected = productManager.productsList.get(index);
+//
+//        if (objectCorrected instanceof Meat) {
+//            System.out.println("Nhập tên sản phẩm muốn sửa: ");
+//            String name = input1.nextLine();
+//
+//            System.out.println("Nhập lại ngày sản xuất: ");
+//            String manufacturing = input1.nextLine();
+//
+//            System.out.println("Nhập lại cân nặng:");
+//            double weight = input.nextDouble();
+//
+//            System.out.println("Nhập lại giá tiền: ");
+//            int cost = input.nextInt();
+//
+//            int id = Products.stt;
+//
+//            if (objectCorrected instanceof Chicken) {
+//                Chicken chicken = new Chicken(manufacturing, cost, id, name, weight);
+//                productManager.editProductByIndex(index, chicken);
+//
+//            } else if (objectCorrected instanceof Pork) {
+//                Pork pork = new Pork(manufacturing, cost, id, name, weight);
+//                productManager.editProductByIndex(index, pork);
+//            } else {
+//                Beef beef = new Beef(manufacturing, cost, id, name, weight);
+//                productManager.editProductByIndex(index, beef);
+//            }
+//            System.out.println(SUCCESSFUL_NEW_CREATION);
+//
+//        }
+//
+//        else if (objectCorrected instanceof Milk) {
+//            System.out.println("Nhập tên sản phẩm muốn sửa: ");
+//            String name = input1.nextLine();
+//
+//            System.out.println("Nhập lại ngày sản xuất: ");
+//            String manufacturing = input1.nextLine();
+//
+//            System.out.println("Nhập lại thể tích:");
+//            int volume = input.nextInt();
+//
+//            System.out.println("Nhập lại giá tiền: ");
+//            int cost = input.nextInt();
+//
+//            int id = Products.stt;
+//
+//            if (objectCorrected instanceof FreshMilk) {
+//                FreshMilk freshMilk = new FreshMilk(manufacturing, cost, id, name, volume);
+//                productManager.editProductByIndex(index, freshMilk);
+//
+//            } else {
+//                PreparedMilk preparedMilk = new PreparedMilk(manufacturing, cost, id, name, volume);
+//                productManager.editProductByIndex(index, preparedMilk);
+//            }
+//            System.out.println(SUCCESSFUL_NEW_CREATION);
+//        } else if () {
+//
+//        }
+////        productManager.editProductByIndex(index,);
+//    }
+
+    public static void editProductByIndex(){
 
         Products objectCorrected = productManager.productsList.get(index);
-
-        if (objectCorrected instanceof Meat){
-            System.out.println("Nhập tên sản phẩm muốn sửa: ");
-            String name = input1.nextLine();
-
-            System.out.println("Nhập lại ngày sản xuất: ");
-            String manufacturing = input1.nextLine();
-
-            System.out.println("Nhập lại cân nặng:");
-            double weight = input.nextDouble();
-
-            System.out.println("Nhập lại giá tiền: ");
-            int cost = input.nextInt();
-
-            int id = Products.stt;
-
-            if (objectCorrected instanceof Chicken){
-                Chicken chicken = new Chicken(manufacturing, cost, id, name, weight);
-                productManager.editProductByIndex(index, chicken);
-
-            } else if (objectCorrected instanceof Pork ) {
-               Pork pork = new Pork(manufacturing, cost, id, name, weight);
-                productManager.editProductByIndex(index, pork);
-            }else {
-                Beef beef = new Beef(manufacturing, cost, id, name, weight);
-                productManager.editProductByIndex(index, beef);
-            }
-
-        } else if () {
-
+        if (objectCorrected instanceof  Meat){
+            Products newProduct = creatNewMeatProduct();
+            productManager.editProductByIndex(index,newProduct);
+        } else if (objectCorrected instanceof Milk) {
+            Products newProduct = creatNewMilkProduct();
+            productManager.editProductByIndex(index,newProduct);
+        }else {
+            Products newProduct = creatNewEggProduct();
+            productManager.editProductByIndex(index,newProduct);
         }
-//        productManager.editProductByIndex(index,);
+        System.out.println(SUCCESSFUL_NEW_CREATION);
     }
 
 
-
-
-
-
+//    public static void deleteProductByIndex(){
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("Nhap id san pham muon xoa");
+//        int indexByDeleteProduct = input.nextInt();
+//
+//
+//        productManager.deleteProductByIndex(indexByDeleteProduct);
+//    }
 }
+
+
+
+
+
+
 
 
 
