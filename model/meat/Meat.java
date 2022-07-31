@@ -25,17 +25,6 @@ public abstract class Meat extends Products implements Serializable {
         this.weight = weight;
     }
 
-    public Meat(String name, double weight) {
-        this.name = name;
-        this.weight = weight;
-    }
-
-    public Meat(String dateOfManufacturing, int cost, String name, double weight) {
-        super(dateOfManufacturing, cost);
-        this.name = name;
-        this.weight = weight;
-    }
-
     public String getName() {
         return name;
     }
@@ -52,12 +41,12 @@ public abstract class Meat extends Products implements Serializable {
         this.weight = weight;
     }
 
-    @Override
-    public String toString() {
-        return "Meat{" +
-                "id ='" + id + '\'' +
-                ", name ='" + name + '\'' +
-                ", weight =" + weight +
-                "} " + super.toString();
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

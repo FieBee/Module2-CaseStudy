@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class ChickenEgg extends Egg implements Conditions, Serializable {
 
+    private static final int EXPIRY = 30;
     public ChickenEgg(int id, int amount) {
         super(id, amount);
     }
@@ -22,11 +23,15 @@ public class ChickenEgg extends Egg implements Conditions, Serializable {
 
     @Override
     public LocalDate getShelfLife() {
-        return getDateOfManufacturing().plusDays(30);
+        return getDateOfManufacturing().plusDays(EXPIRY);
     }
 
-    @Override
     public String toString() {
-        return super.toString();
+        return "Egg{" +
+                "amount =" + super.getAmount() +
+                "dateOfManufacturing =" + super.getDateOfManufacturing() +
+                "shelfLife = " + getShelfLife() +
+                ", cost =" + super.getCost() +
+                "} " ;
     }
 }

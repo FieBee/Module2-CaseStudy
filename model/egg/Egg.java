@@ -35,10 +35,4 @@ public abstract class Egg extends Products implements Serializable {
       this.amount = amount;
    }
 
-   @Override
-   public String toString() {
-      return "Egg{" +
-              "amount=" + amount +
-              "} " + super.toString();
-   }
 }

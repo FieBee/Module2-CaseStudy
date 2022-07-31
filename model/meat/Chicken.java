@@ -6,18 +6,17 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Chicken extends Meat implements Conditions, Serializable {
-
-    public Chicken(int id,String name, double weight ) {
-
-        super( name, weight);
-
-    }
+    private static final int EXPIRY = 4;
 
     public Chicken(String dateOfManufacturing, int cost, int id, String name, double weight) {
         super(dateOfManufacturing, cost, id, name, weight);
     }
 
     public Chicken() {
+    }
+
+    public Chicken(int id, String name, double weight) {
+        super(id, name, weight);
     }
 
     @Override
@@ -27,11 +26,18 @@ public class Chicken extends Meat implements Conditions, Serializable {
 
     @Override
     public LocalDate getShelfLife() {
-        return getDateOfManufacturing().plusDays(4);
+        return getDateOfManufacturing().plusDays(EXPIRY);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Meat{" +
+                "id ='" + super.getId() + '\'' +
+                ", name ='" + super.getName() + '\'' +
+                ", weight =" + super.getWeight() +
+                "dateOfManufacturing=" + super.getDateOfManufacturing() +
+                "shelfLife = " + getShelfLife() +
+                ", cost=" + super.getCost() +
+                "} " ;
     }
 }

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class Beef extends Meat implements Conditions, Serializable {
 
+    private static final int EXPIRY = 7;
     public Beef() {
     }
 
@@ -25,8 +26,18 @@ public class Beef extends Meat implements Conditions, Serializable {
 
     @Override
     public LocalDate getShelfLife() {
-        return getDateOfManufacturing().plusDays(7);
+        return getDateOfManufacturing().plusDays(EXPIRY);
     }
 
-
+    @Override
+    public String toString() {
+        return "Meat{" +
+                "id ='" + super.getId() + '\'' +
+                ", name ='" + super.getName() + '\'' +
+                ", weight =" + super.getWeight() +
+                "dateOfManufacturing=" + super.getDateOfManufacturing() +
+                "shelfLife = " + getShelfLife() +
+                ", cost=" + super.getCost() +
+                "} " ;
+    }
 }

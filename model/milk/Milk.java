@@ -23,6 +23,22 @@ public abstract class Milk extends Products implements Serializable {
         this.volume = volume;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public double getVolume() {
         return volume;
     }
@@ -31,12 +47,4 @@ public abstract class Milk extends Products implements Serializable {
         this.volume = volume;
     }
 
-    @Override
-    public String toString() {
-        return "Milk{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", volume=" + volume +
-                "} " + super.toString();
-    }
 }

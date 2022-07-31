@@ -6,10 +6,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class FreshMilk extends Milk implements Conditions, Serializable {
-
-    public FreshMilk(int id, String name, int volume) {
-        super(id, name, volume);
-    }
+    private static final int EXPIRY = 20;
 
     public FreshMilk(String dateOfManufacturing, int cost, int id, String name, int volume) {
         super(dateOfManufacturing, cost, id, name, volume);
@@ -22,11 +19,18 @@ public class FreshMilk extends Milk implements Conditions, Serializable {
 
     @Override
     public LocalDate getShelfLife() {
-        return getDateOfManufacturing().plusDays(20);
+        return getDateOfManufacturing().plusDays(EXPIRY);
     }
 
     @Override
     public String toString() {
-        return super.toString();
+        return "Meat{" +
+                "id ='" + super.getId() + '\'' +
+                ", name ='" + super.getName() + '\'' +
+                ", volume =" + super.getVolume() +
+                "dateOfManufacturing=" + super.getDateOfManufacturing() +
+                "shelfLife = " + getShelfLife() +
+                ", cost=" + super.getCost() +
+                "} " ;
     }
 }
