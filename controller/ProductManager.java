@@ -10,28 +10,25 @@ import java.util.List;
 
 public class ProductManager {
 
-    private ReadWriteData readWriteData = new ReadWriteFile();
+    private ReadWriteData readWriteFile = new ReadWriteFile();
     public List<Products> productsList = new LinkedList<>();
     public void addProduct(Products product){
         productsList.add(product);
-        readWriteData.writeData(productsList);
+        readWriteFile.writeData(productsList);
     }
 
     public void editProductByIndex(int index, Products product){
         productsList.set(index, product);
-        readWriteData.writeData(productsList);
+        readWriteFile.writeData(productsList);
     }
 
     public void deleteProductByIndex(int index){
         productsList.remove(index);
-        readWriteData.writeData(productsList);
+        readWriteFile.writeData(productsList);
     }
 
     public void displayProduct(){
-        for (Products obj: productsList
-             ) {
-            System.out.println(obj);
-        }
+        readWriteFile.readData();
     }
 
 }
