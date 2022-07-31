@@ -9,6 +9,7 @@ import java.util.List;
 public class ReadWriteFile implements ReadWriteData{
 
 
+
     @Override
     public  List<Products> readData() {
         try{
@@ -20,9 +21,7 @@ public class ReadWriteFile implements ReadWriteData{
 
             return products;
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

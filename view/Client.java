@@ -22,6 +22,7 @@ import java.util.Scanner;
 
 public class Client {
 
+    private static ReadWriteData readWriteFile = new ReadWriteFile();
     public static final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     static ProductManager productManager = new ProductManager();
@@ -42,16 +43,33 @@ public class Client {
             selectOption = input.nextInt();
 
             switch (selectOption){
+
+
+
                 case 0:
                     System.out.println("Bye!");
                     return;
                 case 1:
-                    creatNewMeatProduct();
-                    break;
+                    while (true){
+                        System.out.println("Creat new product: ");
+                        System.out.println("    1. Meat");
+                        System.out.println("    2. Milk");
+                        System.out.println("    3. Egg");
+
+                        int number = input.nextInt();
+
+                        switch (number){
+                            case 1: creatNewMeatProduct(); break;
+                            case 2: creatNewMilkProduct(); break;
+                            case 3: creatNewEggProduct(); break;
+                            default:
+                                System.out.println("Chua co mat hang nay!!! Vui long nhap lai..");
+                        }
+                    }
 
                 case 2: editProductByIndex();break;
                 case 3: deleteProductByIndex();break;
-                case 4: productManager.displayProduct();break;
+                case 4:readWriteFile.readData() ;break;
 //                case 5: materialManager.exchangeRateDifference(arr);break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
@@ -102,8 +120,8 @@ public class Client {
                 System.out.println("Nhập tên sản phẩm muốn tạo mới: ");
                 String name = input1.nextLine();
 
-                System.out.println("Nhập ngày sản xuất: ");
-                String manufacturing = input1.nextLine();
+                String manufacturing = productManager.checkDate();
+
 
                 System.out.println("Nhập cân nặng:");
                 double weight = input.nextDouble();
@@ -156,8 +174,7 @@ public class Client {
                 System.out.println("Nhập tên sản phẩm muốn tạo mới: ");
                 String name = input1.nextLine();
 
-                System.out.println("Nhập ngày sản xuất: ");
-                String manufacturing = input1.nextLine();
+                String manufacturing = productManager.checkDate();
 
                 System.out.println("Nhập thể tích (Ml):");
                 int volume = input.nextInt();
@@ -199,8 +216,7 @@ public class Client {
 
                 Scanner input1 = new Scanner(System.in);
 
-                System.out.println("Nhập ngày sản xuất: ");
-                String manufacturing = input1.nextLine();
+                String manufacturing = productManager.checkDate();
 
                 System.out.println("Nhập số lượng: ");
                 int amount = input.nextInt();
