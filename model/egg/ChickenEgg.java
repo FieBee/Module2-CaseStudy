@@ -7,12 +7,12 @@ import java.time.LocalDate;
 
 public class ChickenEgg extends Egg implements Conditions, Serializable {
 
-    public ChickenEgg(int amount) {
-        super(amount);
+    public ChickenEgg(int id, int amount) {
+        super(id, amount);
     }
 
-    public ChickenEgg(String dateOfManufacturing, int cost, int amount) {
-        super(dateOfManufacturing, cost, amount);
+    public ChickenEgg(String dateOfManufacturing, int cost, int id, int amount) {
+        super(dateOfManufacturing, cost, id, amount);
     }
 
     @Override

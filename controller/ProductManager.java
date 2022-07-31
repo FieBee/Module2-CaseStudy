@@ -27,4 +27,11 @@ public class ProductManager {
         readWriteData.writeData(productsList);
     }
 
+    public void displayProduct(){
+        for (Products obj: productsList
+             ) {
+            System.out.println(obj);
+        }
+    }
+
 }

@@ -32,17 +32,14 @@ public class Client {
         Products product1 = creatNewEggProduct();
         productManager.addProduct(product1);
 
-        for (Products ob: productManager.productsList
-        ) {
-            System.out.println(ob);
-        };
-        editProductByIndex(0);
+        productManager.displayProduct();
+        editProductByIndex();
 
 
-        for (Products ob: productManager.productsList
-             ) {
-            System.out.println(ob);
-        };
+        productManager.displayProduct();
+
+        deleteProductByIndex();
+        productManager.displayProduct();
 
     }
 
@@ -177,15 +174,17 @@ public class Client {
                 System.out.println("Nhập giá tiền: ");
                 int cost = input.nextInt();
 
+                int id = Products.stt;
+                Products.stt++;
 
                 switch (select) {
                     case 1 -> {
-                        Egg egg1 = new DucksEgg(manufacturing, cost, amount);
+                        Egg egg1 = new DucksEgg(manufacturing, cost, id, amount);
                         System.out.println(SUCCESSFUL_NEW_CREATION + egg1);
                         return egg1;
                     }
                     case 2 -> {
-                        Egg egg2 = new DucksEgg(manufacturing, cost, amount);
+                        Egg egg2 = new DucksEgg(manufacturing, cost, id, amount);
                         System.out.println(SUCCESSFUL_NEW_CREATION + egg2);
                         return egg2;
                     }
@@ -265,6 +264,9 @@ public class Client {
 //    }
 
     public static void editProductByIndex(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nhap id san pham muon sua");
+        int index = input.nextInt();
 
         Products objectCorrected = productManager.productsList.get(index);
         if (objectCorrected instanceof  Meat){
@@ -280,15 +282,13 @@ public class Client {
         System.out.println(SUCCESSFUL_NEW_CREATION);
     }
 
+    public static void deleteProductByIndex(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nhap id san pham muon xoa");
+        int index = input.nextInt();
+        productManager.deleteProductByIndex(index);
+    }
 
-//    public static void deleteProductByIndex(){
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Nhap id san pham muon xoa");
-//        int indexByDeleteProduct = input.nextInt();
-//
-//
-//        productManager.deleteProductByIndex(indexByDeleteProduct);
-//    }
 }
 
 
