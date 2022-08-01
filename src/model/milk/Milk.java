@@ -1,4 +1,4 @@
-package model.milk;
+package model.milk;//package src.model.milk;
 
 import model.Products;
 

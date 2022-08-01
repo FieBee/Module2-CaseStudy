@@ -1,35 +1,34 @@
 package storage;
 
-import controller.ProductManager;
 import model.Products;
 
 import java.io.*;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ReadWriteFile implements ReadWriteData{
 
 
-
     @Override
-    public  List<Products> readData() {
+    public LinkedList<Products> readData(String file) {
         try{
-            FileInputStream fileInputStream = new FileInputStream("ProductFile.txt");
+            FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             Object ob = objectInputStream.readObject();
-            List<Products> products = (List<Products>) ob;
-            objectInputStream.close();
+            LinkedList<Products> products = (LinkedList<Products>)  ob;
 
             return products;
 
         } catch (IOException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            System.err.println(e.getMessage());
         }
+        return null;
     }
 
     @Override
-    public void writeData(List<Products> productsList) {
+    public void writeData(List<Products> productsList, String file) {
         try{
-            FileOutputStream fileOutputStream = new FileOutputStream("ProductFile.txt");
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(productsList);
             objectOutputStream.close();

@@ -1,10 +1,10 @@
 package view;
 
+
 import controller.ProductManager;
 import model.Products;
 import model.egg.ChickenEgg;
 import model.egg.DucksEgg;
-import model.egg.Egg;
 import model.meat.Beef;
 import model.meat.Chicken;
 import model.meat.Meat;
@@ -12,17 +12,17 @@ import model.meat.Pork;
 import model.milk.FreshMilk;
 import model.milk.Milk;
 import model.milk.PreparedMilk;
-import storage.ReadWriteData;
 import storage.ReadWriteFile;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
+
 
 
 public class Client {
 
-    private static ReadWriteData readWriteFile = new ReadWriteFile();
+    private static final String MANAGEROFFILE = ProductManager.PRODUCTMANAGEMENT;
+    private static final ReadWriteFile readWriteFile = new ReadWriteFile();
     public static final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     static ProductManager productManager = new ProductManager();
@@ -44,13 +44,10 @@ public class Client {
 
             switch (selectOption){
 
-
-
                 case 0:
                     System.out.println("Bye!");
                     return;
                 case 1:
-                    while (true){
                         System.out.println("Creat new product: ");
                         System.out.println("    1. Meat");
                         System.out.println("    2. Milk");
@@ -62,37 +59,21 @@ public class Client {
                             case 1: creatNewMeatProduct(); break;
                             case 2: creatNewMilkProduct(); break;
                             case 3: creatNewEggProduct(); break;
-                            default:
-                                System.out.println("Chua co mat hang nay!!! Vui long nhap lai..");
+                            default: System.out.println("Chua co mat hang nay!!! Vui long nhap lai..");
                         }
-                    }
+                        break;
 
                 case 2: editProductByIndex();break;
                 case 3: deleteProductByIndex();break;
-                case 4:readWriteFile.readData() ;break;
+                case 4: LinkedList<Products> readData = readWriteFile.readData(MANAGEROFFILE) ;
+                        System.out.println(readData);
+                break;
 //                case 5: materialManager.exchangeRateDifference(arr);break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
             }
         }while(true) ;
 
-
-
-//        System.out.println(productManager);
-
-//        Products products = creatNewMeatProduct();
-//        productManager.addProduct(products);
-//        Products product1 = creatNewEggProduct();
-//        productManager.addProduct(product1);
-//
-//        productManager.displayProduct();
-//        editProductByIndex();
-//
-//
-//        productManager.displayProduct();
-//
-//        deleteProductByIndex();
-//        productManager.displayProduct();
 
     }
 
@@ -102,7 +83,6 @@ public class Client {
 
         try {
             int select;
-            do {
                 System.out.println("Creat new meat product: ");
                 System.out.println("    1. Beef");
                 System.out.println("    2. Chicken");
@@ -111,7 +91,7 @@ public class Client {
 
                 if (select <=0 || select > 3){
                     System.out.println("Thao tac sai! Vui long nhap lai..");
-                    continue;
+                    creatNewMeatProduct();
                 }
 
                 int id = Products.stt;
@@ -131,28 +111,28 @@ public class Client {
 
 
                 switch (select) {
-                    case 1 -> {
+                    case 1 :
                         Beef meat1 = new Beef(manufacturing, cost, id, name, weight);
                         System.out.println(SUCCESSFUL_NEW_CREATION + meat1);
                         productManager.addProduct(meat1);
-                    }
-                    case 2 -> {
+
+                    case 2 :
                         Chicken meat2 = new Chicken(manufacturing, cost, id, name, weight);
                         System.out.println(SUCCESSFUL_NEW_CREATION + meat2);
                         productManager.addProduct(meat2);;
-                    }
-                    case 3 -> {
+
+                    case 3 :
                         Pork meat3 = new Pork(manufacturing, cost, id, name, weight);
                         System.out.println(SUCCESSFUL_NEW_CREATION + meat3);
                         productManager.addProduct(meat3);;
                     }
-                }
-            }while (true);
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
+        return null;
     }
 
     public static Products creatNewMilkProduct(){
@@ -160,12 +140,15 @@ public class Client {
 
         try {
             int select;
-            do {
                 System.out.println("Creat new milk product: ");
                 System.out.println("    1. FreshMilk");
                 System.out.println("    2. PreparedMilk");
                 select = input.nextInt();
 
+                if (select <=0 || select > 2) {
+                    System.out.println("Thao tac sai! Vui long nhap lai..");
+                    creatNewMilkProduct();
+                }
                 Scanner input1 = new Scanner(System.in);
 
                 int id = Products.stt;
@@ -184,23 +167,23 @@ public class Client {
 
 
                 switch (select) {
-                    case 1 -> {
+                    case 1 :
                         Milk milk1 = new FreshMilk(manufacturing, cost, id, name, volume);
                         System.out.println(SUCCESSFUL_NEW_CREATION + milk1);
-                        return milk1;
-                    }
-                    case 2 -> {
+                        productManager.addProduct(milk1);
+
+                    case 2 :
                         Milk milk2 = new PreparedMilk(manufacturing, cost, id, name, volume);
                         System.out.println(SUCCESSFUL_NEW_CREATION + milk2);
-                        return milk2;
-                    }
-                    default -> System.out.println("Thao tac sai! Vui long nhap lai..");
+                        productManager.addProduct(milk2);
+
+                    default : System.out.println("Thao tac sai! Vui long nhap lai..");
                 }
-            }while (true);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 
     public static Products creatNewEggProduct(){
@@ -208,12 +191,15 @@ public class Client {
 
         try {
             int select;
-            do {
                 System.out.println("Creat new egg product: ");
                 System.out.println("    1. Ducks Egg");
                 System.out.println("    2. Chicken Egg");
                 select = input.nextInt();
 
+            if (select <=0 || select > 2){
+                System.out.println("Thao tac sai! Vui long nhap lai..");
+                creatNewEggProduct();
+            }else {
                 Scanner input1 = new Scanner(System.in);
 
                 String manufacturing = productManager.checkDate();
@@ -228,23 +214,24 @@ public class Client {
                 Products.stt++;
 
                 switch (select) {
-                    case 1 -> {
-                        Egg egg1 = new DucksEgg(manufacturing, cost, id, amount);
+                    case 1:
+                        ChickenEgg egg1 = new ChickenEgg(manufacturing, cost, id, amount);
                         System.out.println(SUCCESSFUL_NEW_CREATION + egg1);
-                        return egg1;
-                    }
-                    case 2 -> {
-                        Egg egg2 = new DucksEgg(manufacturing, cost, id, amount);
+                        productManager.addProduct(egg1);
+
+                case 2 :
+                        DucksEgg egg2 = new DucksEgg(manufacturing, cost, id, amount);
                         System.out.println(SUCCESSFUL_NEW_CREATION + egg2);
-                        return egg2;
-                    }
-                    default -> System.out.println("Thao tac sai! Vui long nhap lai..");
+                        productManager.addProduct(egg2);
+
+                    default : System.out.println("Thao tac sai! Vui long nhap lai..");
                 }
-            }while (true);
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
 
     public static void editProductByIndex(){
@@ -253,7 +240,7 @@ public class Client {
         int index = input.nextInt();
 
         Products objectCorrected = productManager.productsList.get(index);
-        if (objectCorrected instanceof  Meat){
+        if (objectCorrected instanceof Meat){
             Products newProduct = creatNewMeatProduct();
             productManager.editProductByIndex(index,newProduct);
         } else if (objectCorrected instanceof Milk) {
