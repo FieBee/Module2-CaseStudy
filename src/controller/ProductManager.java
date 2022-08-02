@@ -4,7 +4,6 @@ import model.Products;
 import storage.ReadWriteData;
 import storage.ReadWriteFile;
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -12,9 +11,12 @@ import java.util.regex.Pattern;
 public class ProductManager {
 
     public static final String PRODUCT_MANAGEMENT = "ProductManagement.phuong";
-    public static ReadWriteData readWriteFile = new ReadWriteFile();
-    public List<Products> productsList = new LinkedList<>();
+//    private List<Products> listProductOfManager = readWriteFile.readData(PRODUCT_MANAGEMENT);
 
+
+    public static ReadWriteData readWriteFile = new ReadWriteFile();
+    public static List<Products> productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+//    private List<Products> listProductOfManager = readWriteFile.readData(MANAGER_OF_FILE);
 
 
     public void addProduct(Products product){
@@ -33,13 +35,9 @@ public class ProductManager {
     }
 
     public void displayProduct(){
-        List<Products> displayListProductOfManager = readWriteFile.readData( PRODUCT_MANAGEMENT);
-        System.out.println(displayListProductOfManager);
+        System.out.println(productsList);
     }
 
-    public  void main(String[] args) {
-        readWriteFile.readData( PRODUCT_MANAGEMENT);
-    }
 
     public String checkDate(){
         try{
@@ -65,4 +63,9 @@ public class ProductManager {
             throw new RuntimeException(e);
         }
     }
+
+//    public static void main(String[] args) {
+//        productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+//        System.out.println(productsList);
+//    }
 }

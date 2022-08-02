@@ -16,9 +16,7 @@ import java.util.Scanner;
 
 public class RunByAdmin {
     static ProductManager productManager = new ProductManager();
-//    private final String MANAGER_OF_FILE = ProductManager.PRODUCT_MANAGEMENT;
 
-//    private List<Products> listProductOfManager = readWriteFile.readData(MANAGER_OF_FILE);
 
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
@@ -33,7 +31,6 @@ public class RunByAdmin {
             System.out.println("║>[2]. Sửa thông tin                                         ║");
             System.out.println("║>[3]. Xóa sản phẩm                                          ║");
             System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
-//            System.out.println("║>[5]. Doanh thu sản phẩm                                    ║");
             System.out.println("║>[0]. Đăng xuất                                             ║");
             System.out.println("╚============================================================╝");
             selectOption = input.nextInt();
@@ -50,7 +47,7 @@ public class RunByAdmin {
                     System.out.println("║>[1]. Meat                                 ║");
                     System.out.println("║>[2]. Milk                                 ║");
                     System.out.println("║>[3]. Egg                                  ║");
-                    System.out.println("║>[0]. Thoát                              ║");
+                    System.out.println("║>[0]. Thoát                                ║");
                     System.out.println("╚===========================================╝");
 
                     int number = input.nextInt();
