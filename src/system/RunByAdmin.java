@@ -12,16 +12,13 @@ import model.milk.FreshMilk;
 import model.milk.Milk;
 import model.milk.PreparedMilk;
 
-import java.util.List;
 import java.util.Scanner;
-
-import static controller.ProductManager.readWriteFile;
 
 public class RunByAdmin {
     static ProductManager productManager = new ProductManager();
-    private final String MANAGER_OF_FILE = ProductManager.PRODUCT_MANAGEMENT;
+//    private final String MANAGER_OF_FILE = ProductManager.PRODUCT_MANAGEMENT;
 
-    private List<Products> listProductOfManager = readWriteFile.readData(MANAGER_OF_FILE);
+//    private List<Products> listProductOfManager = readWriteFile.readData(MANAGER_OF_FILE);
 
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
@@ -53,12 +50,13 @@ public class RunByAdmin {
                     System.out.println("║>[1]. Meat                                 ║");
                     System.out.println("║>[2]. Milk                                 ║");
                     System.out.println("║>[3]. Egg                                  ║");
-//                    System.out.println("║>[0]. Thoát                              ║");
+                    System.out.println("║>[0]. Thoát                              ║");
                     System.out.println("╚===========================================╝");
 
                     int number = input.nextInt();
 
                     switch (number){
+                        case 0: continue;
                         case 1: creatNewMeatProduct(); break;
                         case 2: creatNewMilkProduct(); break;
                         case 3: creatNewEggProduct(); break;
@@ -69,7 +67,8 @@ public class RunByAdmin {
                 case 2: editProductByIndex();break;
                 case 3: deleteProductByIndex();break;
                 case 4:
-                    System.out.println(listProductOfManager);break;
+                    productManager.displayProduct();
+                    break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
             }
@@ -116,16 +115,19 @@ public class RunByAdmin {
                     Beef meat1 = new Beef(manufacturing, cost, id, name, weight);
                     System.out.println(SUCCESSFUL_NEW_CREATION + meat1);
                     productManager.addProduct(meat1);
+                    break;
 
                 case 2 :
                     Chicken meat2 = new Chicken(manufacturing, cost, id, name, weight);
                     System.out.println(SUCCESSFUL_NEW_CREATION + meat2);
                     productManager.addProduct(meat2);;
+                    break;
 
                 case 3 :
                     Pork meat3 = new Pork(manufacturing, cost, id, name, weight);
                     System.out.println(SUCCESSFUL_NEW_CREATION + meat3);
-                    productManager.addProduct(meat3);;
+                    productManager.addProduct(meat3);
+                    break;
             }
 
 

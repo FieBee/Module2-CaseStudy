@@ -33,7 +33,8 @@ public class ProductManager {
     }
 
     public void displayProduct(){
-        readWriteFile.readData( PRODUCT_MANAGEMENT);
+        List<Products> displayListProductOfManager = readWriteFile.readData( PRODUCT_MANAGEMENT);
+        System.out.println(displayListProductOfManager);
     }
 
     public  void main(String[] args) {
