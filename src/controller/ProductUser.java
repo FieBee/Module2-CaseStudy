@@ -8,19 +8,19 @@ import java.util.List;
 
 public class ProductUser {
 
-    private static final String CARTMANAGEMENT = "CartManagement";
+    public static final String CART_MANAGEMENT = "CartManagement.phuong";
     private ReadWriteData readWriteData = new ReadWriteFile();
 
     public List<Products> cart = new LinkedList<>();
 
     public void addProductToCart(Products product){
         cart.add(product);
-        readWriteData.writeData(cart, CARTMANAGEMENT);
+        readWriteData.writeData(cart, CART_MANAGEMENT);
     }
 
     public void deleteProductByIndex(int index){
         cart.remove(index);
-        readWriteData.writeData(cart, CARTMANAGEMENT);
+        readWriteData.writeData(cart, CART_MANAGEMENT);
     }
 
 
@@ -33,7 +33,7 @@ public class ProductUser {
         return sum;
     }
     public void displayProduct(){
-        readWriteData.readData(CARTMANAGEMENT);
+        readWriteData.readData(CART_MANAGEMENT);
     }
 
 

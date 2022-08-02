@@ -11,33 +11,33 @@ import java.util.regex.Pattern;
 
 public class ProductManager {
 
-    public static final String PRODUCTMANAGEMENT = "ProductManagement.phuong";
-    private static ReadWriteData readWriteFile = new ReadWriteFile();
+    public static final String PRODUCT_MANAGEMENT = "ProductManagement.phuong";
+    public static ReadWriteData readWriteFile = new ReadWriteFile();
     public List<Products> productsList = new LinkedList<>();
 
 
 
     public void addProduct(Products product){
         productsList.add(product);
-        readWriteFile.writeData(productsList, PRODUCTMANAGEMENT);
+        readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
     }
 
     public void editProductByIndex(int index, Products product){
         productsList.set(index, product);
-        readWriteFile.writeData(productsList, PRODUCTMANAGEMENT);
+        readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
     }
 
     public void deleteProductByIndex(int index){
         productsList.remove(index);
-        readWriteFile.writeData(productsList,  PRODUCTMANAGEMENT);
+        readWriteFile.writeData(productsList,  PRODUCT_MANAGEMENT);
     }
 
     public void displayProduct(){
-        readWriteFile.readData( PRODUCTMANAGEMENT);
+        readWriteFile.readData( PRODUCT_MANAGEMENT);
     }
 
     public  void main(String[] args) {
-        readWriteFile.readData( PRODUCTMANAGEMENT);
+        readWriteFile.readData( PRODUCT_MANAGEMENT);
     }
 
     public String checkDate(){
