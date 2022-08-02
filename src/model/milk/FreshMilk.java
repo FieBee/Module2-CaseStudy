@@ -24,13 +24,13 @@ public class FreshMilk extends Milk implements Conditions, Serializable {
 
     @Override
     public String toString() {
-        return "Meat{" +
-                "id ='" + super.getId() + '\'' +
-                ", name ='" + super.getName() + '\'' +
-                ", volume =" + super.getVolume() +
-                "dateOfManufacturing=" + super.getDateOfManufacturing() +
-                "shelfLife = " + getShelfLife() +
-                ", cost=" + super.getCost() +
+        return "FreshMilk {" +
+                "id = '" + super.getId() + '\'' +
+                ", name = '" + super.getName() + '\'' +
+                ", volume = " + super.getVolume() +
+                ", dateOfManufacturing = " + super.getDateOfManufacturing() +
+                ", shelfLife = " + getShelfLife() +
+                ", cost = " + super.getCost() +
                 "} " ;
     }
 }

@@ -11,7 +11,6 @@ import java.util.regex.Pattern;
 public class ProductManager {
 
     public static final String PRODUCT_MANAGEMENT = "ProductManagement.phuong";
-//    private List<Products> listProductOfManager = readWriteFile.readData(PRODUCT_MANAGEMENT);
 
 
     public static ReadWriteData readWriteFile = new ReadWriteFile();
@@ -35,7 +34,12 @@ public class ProductManager {
     }
 
     public void displayProduct(){
-        System.out.println(productsList);
+        if(productsList.isEmpty()){
+            System.out.println("\t\tChưa có sản phẩm nào");
+        } else {
+            productsList.forEach(System.out::println);
+        }
+
     }
 
 

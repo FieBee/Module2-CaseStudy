@@ -17,7 +17,6 @@ import java.util.Scanner;
 public class RunByAdmin {
     static ProductManager productManager = new ProductManager();
 
-
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     public void menuManager() {

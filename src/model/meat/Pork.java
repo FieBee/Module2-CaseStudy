@@ -25,13 +25,14 @@ public class Pork extends Meat implements Conditions, Serializable {
 
     @Override
     public String toString() {
-        return "Meat{" +
-                "id ='" + super.getId() + '\'' +
-                ", name ='" + super.getName() + '\'' +
-                ", weight =" + super.getWeight() +
-                "dateOfManufacturing=" + super.getDateOfManufacturing() +
+        return "Pork {" +
+                "id = '" + super.getId() + '\'' +
+                ", name = '" + super.getName() + '\'' +
+                ", weight = " + super.getWeight() +
+                "dateOfManufacturing = " + super.getDateOfManufacturing() +
+                ", shelfLife = " + getShelfLife() +
                 "shelfLife = " + getShelfLife() +
-                ", cost=" + super.getCost() +
+                ", cost = " + super.getCost() +
                 "} " ;
     }
 }
