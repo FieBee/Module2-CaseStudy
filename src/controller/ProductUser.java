@@ -23,6 +23,8 @@ public class ProductUser {
         readWriteData.writeData(cart, CARTMANAGEMENT);
     }
 
+
+//    Thanh toán
     public int cartPayment(){
         int sum = 0;
         for (int i = 0; i < cart.size(); i++) {

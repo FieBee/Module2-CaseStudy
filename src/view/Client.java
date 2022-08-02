@@ -2,6 +2,7 @@ package view;
 
 
 import controller.ProductManager;
+import controller.ProductUser;
 import model.Products;
 import model.egg.ChickenEgg;
 import model.egg.DucksEgg;
@@ -26,20 +27,22 @@ public class Client {
     public static final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     static ProductManager productManager = new ProductManager();
+    static ProductUser productUser = new ProductUser();
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
         int selectOption;
         do {
-            System.out.println("------------------------------");
-            System.out.println("Chọn thao tác: ");
-            System.out.println("   1. Thêm sản phẩm.");
-            System.out.println("   2. Sửa thông tin sản phẩm theo id.");
-            System.out.println("   3. Xoá sản phẩm theo id.");
-            System.out.println("   4. Hiển thị danh sách sản phẩm.");
-            System.out.println("   5. Thông tin chiết khấu chênh lệch. ");
-            System.out.println("   0. Thoát khỏi chương trình. ");
-            System.out.println("------------------------------");
+            System.out.println("╔============================================================╗");
+            System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+            System.out.println("╠============================================================╣");
+            System.out.println("║>[1]. Thêm sản phẩm                                         ║");
+            System.out.println("║>[2]. Sửa thông tin                                         ║");
+            System.out.println("║>[3]. Xóa sản phẩm                                          ║");
+            System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
+            System.out.println("║>[5]. Doanh thu sản phẩm                                    ║");
+            System.out.println("║>[0]. Đăng xuất                                             ║");
+            System.out.println("╚============================================================╝");
             selectOption = input.nextInt();
 
             switch (selectOption){
@@ -48,10 +51,14 @@ public class Client {
                     System.out.println("Bye!");
                     return;
                 case 1:
-                        System.out.println("Creat new product: ");
-                        System.out.println("    1. Meat");
-                        System.out.println("    2. Milk");
-                        System.out.println("    3. Egg");
+                    System.out.println("╔===========================================╗");
+                    System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+                    System.out.println("╠===========================================╣");
+                    System.out.println("║>[1]. Meat                                 ║");
+                    System.out.println("║>[2]. Milk                                 ║");
+                    System.out.println("║>[3]. Egg                                  ║");
+//                    System.out.println("║>[0]. Thoát                              ║");
+                    System.out.println("╚===========================================╝");
 
                         int number = input.nextInt();
 
@@ -66,9 +73,7 @@ public class Client {
                 case 2: editProductByIndex();break;
                 case 3: deleteProductByIndex();break;
                 case 4: LinkedList<Products> readData = readWriteFile.readData(MANAGEROFFILE) ;
-                        System.out.println(readData);
-                break;
-//                case 5: materialManager.exchangeRateDifference(arr);break;
+                        System.out.println(readData);break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
             }
@@ -83,14 +88,17 @@ public class Client {
 
         try {
             int select;
-                System.out.println("Creat new meat product: ");
-                System.out.println("    1. Beef");
-                System.out.println("    2. Chicken");
-                System.out.println("    3. Pork");
+            System.out.println("╔===========================================╗");
+            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("╠===========================================╣");
+            System.out.println("║>[1]. Beef                                 ║");
+            System.out.println("║>[2]. Chicken                              ║");
+            System.out.println("║>[3]. Pork                                 ║");
+            System.out.println("╚===========================================╝");
                 select = input.nextInt();
 
                 if (select <=0 || select > 3){
-                    System.out.println("Thao tac sai! Vui long nhap lai..");
+                    System.out.println("Thao tác sai! Vui lòng nhập lại..");
                     creatNewMeatProduct();
                 }
 
@@ -101,7 +109,6 @@ public class Client {
                 String name = input1.nextLine();
 
                 String manufacturing = productManager.checkDate();
-
 
                 System.out.println("Nhập cân nặng:");
                 double weight = input.nextDouble();
@@ -140,13 +147,16 @@ public class Client {
 
         try {
             int select;
-                System.out.println("Creat new milk product: ");
-                System.out.println("    1. FreshMilk");
-                System.out.println("    2. PreparedMilk");
+            System.out.println("╔===========================================╗");
+            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("╠===========================================╣");
+            System.out.println("║>[1]. FreshMilk                            ║");
+            System.out.println("║>[2]. PreparedMilk                         ║");
+            System.out.println("╚===========================================╝");
                 select = input.nextInt();
 
                 if (select <=0 || select > 2) {
-                    System.out.println("Thao tac sai! Vui long nhap lai..");
+                    System.out.println("Thao tác sai! Vui lòng nhập lại..");
                     creatNewMilkProduct();
                 }
                 Scanner input1 = new Scanner(System.in);
@@ -177,7 +187,7 @@ public class Client {
                         System.out.println(SUCCESSFUL_NEW_CREATION + milk2);
                         productManager.addProduct(milk2);
 
-                    default : System.out.println("Thao tac sai! Vui long nhap lai..");
+                    default : System.out.println("Thao tác sai! Vui lòng nhập lại..");
                 }
 
         } catch (Exception e) {
@@ -191,9 +201,12 @@ public class Client {
 
         try {
             int select;
-                System.out.println("Creat new egg product: ");
-                System.out.println("    1. Ducks Egg");
-                System.out.println("    2. Chicken Egg");
+            System.out.println("╔===========================================╗");
+            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("╠===========================================╣");
+            System.out.println("║>[1]. ChickenEgg                           ║");
+            System.out.println("║>[2]. DucksEgg                             ║");
+            System.out.println("╚===========================================╝");
                 select = input.nextInt();
 
             if (select <=0 || select > 2){
@@ -224,7 +237,7 @@ public class Client {
                         System.out.println(SUCCESSFUL_NEW_CREATION + egg2);
                         productManager.addProduct(egg2);
 
-                    default : System.out.println("Thao tac sai! Vui long nhap lai..");
+                    default : System.out.println("Thao tác sai! Vui lòng nhập lại..");
                 }
             }
 
@@ -236,7 +249,7 @@ public class Client {
 
     public static void editProductByIndex(){
         Scanner input = new Scanner(System.in);
-        System.out.println("Nhap id san pham muon sua");
+        System.out.println("Nhập ID sản phẩm muốn sửa: ");
         int index = input.nextInt();
 
         Products objectCorrected = productManager.productsList.get(index);
@@ -256,7 +269,7 @@ public class Client {
     public static void deleteProductByIndex(){
         try{
             Scanner input = new Scanner(System.in);
-            System.out.println("Nhap id san pham muon xoa");
+            System.out.println("Nhập id sản phẩm muốn xóa");
             int index = input.nextInt();
             productManager.deleteProductByIndex(index);
         } catch (Exception e) {
@@ -264,6 +277,10 @@ public class Client {
         }
 
     }
+
+
+
+
 
 }
 
