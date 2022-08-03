@@ -2,7 +2,6 @@ package login;
 
 import account.AccountAdmin;
 import account.AccountUser;
-import account.AccountUserManager;
 import system.RunByAdmin;
 import system.RunByUser;
 
@@ -14,7 +13,7 @@ public class Login {
     RunByAdmin runByAdmin = new RunByAdmin();
     AccountUser accountUser = new AccountUser();
     AccountAdmin accountAdmin = new AccountAdmin();
-    AccountUserManager accountUserManager = new AccountUserManager();
+//    AccountUserManager accountUserManager = new AccountUserManager();
 
     Scanner scanner = new Scanner(System.in);
     public Login() {
@@ -47,16 +46,18 @@ public class Login {
             }
         } while (true);
     }
-    public void loginManager() throws InputMismatchException {
-        System.out.println("┎──────────────[ĐĂNG NHẬP]──────────────┒");
-        System.out.print("┠ ▹ Nhập tài khoản: ");
-        String account = scanner.nextLine();
-        System.out.print("┠ ▹ Nhập mật khẩu: ");
-        String password = scanner.nextLine();
-        System.out.println("┖───────────────────────────────────────┚");
-//        (account, password);
-
-
+    public void loginManager(){
+        try{
+            System.out.println("┎──────────────[ĐĂNG NHẬP]──────────────┒");
+            System.out.print("┠ ▹ Nhập tài khoản: ");
+            String account = scanner.nextLine();
+            System.out.print("┠ ▹ Nhập mật khẩu: ");
+            String password = scanner.nextLine();
+            System.out.println("┖───────────────────────────────────────┚");
+            checkAccount(account,password);
+        } catch (Exception e) {
+            e.getMessage();
+        }
     }
 
     public static void main(String[] args) {
@@ -65,15 +66,26 @@ public class Login {
     }
 
     public void checkAccount(String account, String password){
-        if (checkAccountAdmin(account,password)){
-            System.out.println("[\uD83D\uDD13] Đặng nhập hệ thống bởi ADMIN thành công !!!");
-            System.out.println("------------------------------------------------------------");
-            runByAdmin.menuManager();
-        } else if (checkAccountUser(account, password)) {
-            System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
-            System.out.println("----------------------------------------------------------");
-            runByUser.displayShop();
+        try {
+            if (checkAccountAdmin(account,password)){
+                System.out.println("[\uD83D\uDD13] Đặng nhập hệ thống bởi ADMIN thành công !!!");
+                System.out.println("------------------------------------------------------------");
+                runByAdmin.menuManager();
+            } else if (checkAccountUser(account, password)) {
+                System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
+                System.out.println("----------------------------------------------------------");
+                runByUser.displayShop();
+            }else {
+                System.err.println("Tên đăng nhập hoặc mật khẩu không đúng! Mời nhập lại: ");
+                System.out.println("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
+                System.out.println("----------------------------------------------------------");
+                loginManager();
+            }
+        } catch (InputMismatchException e) {
+            e.getMessage();
         }
+
     }
 
     public boolean checkAccountAdmin(String name, String password){
@@ -92,9 +104,9 @@ public class Login {
             if (check){
                 return true;
             }
-            return false;
 
-        }
+
+        }return false;
     }
 
 
