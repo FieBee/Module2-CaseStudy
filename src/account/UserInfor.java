@@ -2,20 +2,20 @@ package account;
 
 import java.io.Serializable;
 
-public class User implements Serializable {
+public class UserInfor implements Serializable {
     private String nameUser;
     private String phonenumberUser;
     private String addressUser;
     private String emailUser;
 
-    public User(String nameUser, String phonenumberUser, String addressUser, String emailUser) {
+    public UserInfor(String nameUser, String phonenumberUser, String addressUser, String emailUser) {
         this.nameUser = nameUser;
         this.phonenumberUser = phonenumberUser;
         this.addressUser = addressUser;
         this.emailUser = emailUser;
     }
 
-    public User() {
+    public UserInfor() {
     }
 
     public String getEmailUser() {

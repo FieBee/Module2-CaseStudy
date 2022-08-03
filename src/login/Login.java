@@ -2,7 +2,8 @@ package login;
 
 import account.AccountAdmin;
 import account.AccountUser;
-import account.User;
+//import account.User;
+import account.UserInfor;
 import system.RunByAdmin;
 import system.RunByUser;
 import validate.Validate;
@@ -12,12 +13,15 @@ import java.util.Scanner;
 
 public class Login {
 
-    private User user = new User();
+    private UserInfor userInfor = new UserInfor();
     private Validate validate = new Validate();
     private RunByUser runByUser = new RunByUser();
     private RunByAdmin runByAdmin = new RunByAdmin();
     private AccountUser accountUser = new AccountUser();
     private AccountAdmin accountAdmin = new AccountAdmin();
+
+//    private NewAccount newAccount = new NewAccount();
+
 //    AccountUserManager accountUserManager = new AccountUserManager();
 
     Scanner scanner = new Scanner(System.in);
@@ -194,7 +198,7 @@ public class Login {
             System.out.println("[❌] Tài khoản đã tồn tại. Vui lòng đăng ký lại !!!");
             System.out.println("---------------------------------------");
         } else {
-            user.addUser(new User(name,phoneNumber,address,email));
+            userInfor.addUser(new UserInfor(name,phoneNumber,address,email));
             accountUserManager.addAccount(new AccountUser(accountUser,passwordUser));
             System.out.println("[\uD83D\uDC4C] Đăng ký thành công. Mời đăng nhập vào hệ thống !!!");
             System.out.println("----------------------------------------");
