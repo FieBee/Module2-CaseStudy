@@ -10,5 +10,4 @@ public interface ReadWriteData <E> {
 
     void writeData(List<E> productsList, String file);
 
-    void writeData(List<E> productsList, String file);
 }
