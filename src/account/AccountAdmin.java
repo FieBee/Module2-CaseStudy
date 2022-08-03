@@ -12,9 +12,9 @@ public class AccountAdmin {
         this.adminPassword = adminPassword;
     }
     public AccountAdmin(){
-        accountsAdminList.add(new AccountAdmin("Admin1","123456"));
-        accountsAdminList.add(new AccountAdmin("Admin2","123456"));
-        accountsAdminList.add(new AccountAdmin("Admin3","123456"));
+        accountsAdminList.add(new AccountAdmin("Admin1","111111"));
+        accountsAdminList.add(new AccountAdmin("Admin2","222222"));
+        accountsAdminList.add(new AccountAdmin("Admin3","333333"));
     }
 
     public ArrayList<AccountAdmin> getAccountsAdminList() {

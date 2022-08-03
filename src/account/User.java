@@ -15,6 +15,9 @@ public class User implements Serializable {
         this.emailUser = emailUser;
     }
 
+    public User() {
+    }
+
     public String getEmailUser() {
         return emailUser;
     }
