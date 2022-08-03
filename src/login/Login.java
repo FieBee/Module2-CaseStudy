@@ -1,9 +1,7 @@
 package login;
 
-import account.AccountAdmin;
-import account.AccountUser;
+import account.*;
 //import account.User;
-import account.UserInfor;
 import system.RunByAdmin;
 import system.RunByUser;
 import validate.Validate;
@@ -13,6 +11,8 @@ import java.util.Scanner;
 
 public class Login {
 
+    private AccountUserManager accountUserManager = new AccountUserManager();
+    private UserManager userManager = new UserManager();
     private UserInfor userInfor = new UserInfor();
     private Validate validate = new Validate();
     private RunByUser runByUser = new RunByUser();
@@ -44,7 +44,7 @@ public class Login {
                     loginManager();
                     break;
                 case 2:
-//                    registerAccountUser();
+                    creatAccount();
                     break;
                 case 0:
                     System.exit(0);
@@ -118,10 +118,20 @@ public class Login {
     }
 
     public void creatAccount(){
+        Scanner input = new Scanner(System.in);
         System.out.println("┎──────────────[ĐĂNG KÝ]──────────────┒");
         System.out.println("[\uD83D\uDD11] Mời bạn nhập thông tin:");
         System.out.println("--------------------------------------");
-
+        String accountName = checkAccountName();
+        String accountPassword = checkPassword();
+        System.out.print("┠ ▹ Nhập tên: ");
+        String name = scanner.nextLine();
+        System.out.print("┠ ▹ Nhập địa chỉ: ");
+        String address = scanner.nextLine();
+        String phoneNumber = checkPhoneNumber();
+        String email = checkEmail();
+        System.out.println("┖─────────────────────────────────────┚");
+        checkAccountUser(accountName, accountPassword, name, address, phoneNumber, email);
     }
 
 
@@ -198,7 +208,7 @@ public class Login {
             System.out.println("[❌] Tài khoản đã tồn tại. Vui lòng đăng ký lại !!!");
             System.out.println("---------------------------------------");
         } else {
-            userInfor.addUser(new UserInfor(name,phoneNumber,address,email));
+            userManager.addUserInfor(new UserInfor(name,phoneNumber,address,email));
             accountUserManager.addAccount(new AccountUser(accountUser,passwordUser));
             System.out.println("[\uD83D\uDC4C] Đăng ký thành công. Mời đăng nhập vào hệ thống !!!");
             System.out.println("----------------------------------------");
