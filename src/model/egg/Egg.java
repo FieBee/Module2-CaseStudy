@@ -21,7 +21,11 @@ public abstract class Egg extends Products implements Serializable {
       this.amount = amount;
    }
 
-   public int getId() {
+    public Egg() {
+
+    }
+
+    public int getId() {
       return id;
    }
 

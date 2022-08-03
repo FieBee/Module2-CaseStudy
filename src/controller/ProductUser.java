@@ -12,6 +12,7 @@ public class ProductUser {
     private ReadWriteData readWriteData = new ReadWriteFile();
 
     public List<Products> cart = new LinkedList<>();
+    ProductManager productManager = new ProductManager();
 
     public void addProductToCart(Products product){
         cart.add(product);
@@ -32,8 +33,8 @@ public class ProductUser {
         }
         return sum;
     }
-    public void displayProduct(){
-        readWriteData.readData(CART_MANAGEMENT);
+    public void display(){
+        productManager.displayProduct();
     }
 
 

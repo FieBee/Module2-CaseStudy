@@ -4,18 +4,20 @@ import model.Products;
 import storage.ReadWriteData;
 import storage.ReadWriteFile;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ProductManager {
 
-    public static final String PRODUCT_MANAGEMENT = "ProductManagement.phuong";
-
-
+    public static final String PRODUCT_MANAGEMENT = "ProductManagement.pku0ng";
     public static ReadWriteData readWriteFile = new ReadWriteFile();
-    public static List<Products> productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
-//    private List<Products> listProductOfManager = readWriteFile.readData(MANAGER_OF_FILE);
+    private static int count = 1;
+    public static List<Products> productsList = new ArrayList<>();
+    ArrayList<Products> productsArrayList;
+//    public static List<Products> productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+
 
 
     public void addProduct(Products product){
@@ -24,20 +26,31 @@ public class ProductManager {
     }
 
     public void editProductByIndex(int index, Products product){
-        productsList.set(index, product);
-        readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
+        System.out.println(productsArrayList.size());
+        ArrayList<Products> productsArrayList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+        productsArrayList.set(index, product);
+        readWriteFile.writeData(productsArrayList, PRODUCT_MANAGEMENT);
+        Products.stt++;
     }
 
     public void deleteProductByIndex(int index){
-        productsList.remove(index);
-        readWriteFile.writeData(productsList,  PRODUCT_MANAGEMENT);
+        ArrayList<Products> productsArrayList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+        productsArrayList.remove(index);
+        readWriteFile.writeData(productsArrayList,  PRODUCT_MANAGEMENT);
     }
 
     public void displayProduct(){
-        if(productsList.isEmpty()){
-            System.out.println("\t\tChưa có sản phẩm nào");
-        } else {
-            productsList.forEach(System.out::println);
+        count=1;
+        try{
+            ArrayList<Products> displayFile = readWriteFile.readData(PRODUCT_MANAGEMENT);
+            for (Products elm: displayFile
+            ) {
+                System.out.println(count +". "+ elm);
+                count++;
+            };
+        } catch (Exception e) {
+            System.out.println("Gian hàng trống!");
+            e.getMessage();
         }
 
     }
@@ -68,8 +81,4 @@ public class ProductManager {
         }
     }
 
-//    public static void main(String[] args) {
-//        productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
-//        System.out.println(productsList);
-//    }
 }

@@ -7,7 +7,6 @@ import system.RunByAdmin;
 
 
 public class Client {
-
     private static RunByAdmin admin = new RunByAdmin();
 //    private static final String CART_OF_FILE = ProductUser.CART_MANAGEMENT;
 
@@ -20,6 +19,7 @@ public class Client {
 
     public static void main(String[] args) {
         admin.menuManager();
+
     }
 
 

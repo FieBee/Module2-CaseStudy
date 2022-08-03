@@ -35,9 +35,8 @@ public class Beef extends Meat implements Conditions, Serializable {
                 "id = '" + super.getId() + '\'' +
                 ", name = '" + super.getName() + '\'' +
                 ", weight = " + super.getWeight() +
-                "dateOfManufacturing = " + super.getDateOfManufacturing() +
+                ", dateOfManufacturing = " + super.getDateOfManufacturing() +
                 ", shelfLife = " + getShelfLife() +
-                "shelfLife = " + getShelfLife() +
                 ", cost = " + super.getCost() +
                 "} " ;
     }

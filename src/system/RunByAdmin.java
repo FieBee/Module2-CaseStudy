@@ -14,12 +14,17 @@ import model.milk.PreparedMilk;
 
 import java.util.Scanner;
 
+import static controller.ProductManager.*;
+
 public class RunByAdmin {
     static ProductManager productManager = new ProductManager();
 
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     public void menuManager() {
+//        readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
+        productsList =  readWriteFile.readData(PRODUCT_MANAGEMENT);
+
         Scanner input = new Scanner(System.in);
         int selectOption;
         do {
@@ -56,7 +61,7 @@ public class RunByAdmin {
                         case 1: creatNewMeatProduct(); break;
                         case 2: creatNewMilkProduct(); break;
                         case 3: creatNewEggProduct(); break;
-                        default: System.out.println("Chưa có mặt hàng này!!! Vui lòng chọn lại..");
+                        default: System.out.println("Chưa có mặt hàng này!!! Vui lòng thao tác lại lại..");
                     }
                     break;
 
@@ -128,10 +133,13 @@ public class RunByAdmin {
 
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.getMessage();
         }
 
         return null;
+    }
+
+    public static void main(String[] args) {
     }
 
     public Products creatNewMilkProduct(){
@@ -247,8 +255,9 @@ public class RunByAdmin {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập ID sản phẩm muốn sửa: ");
         int index = input.nextInt();
+        System.out.println("Size" + productsList.size());
 
-        Products objectCorrected = productManager.productsList.get(index);
+        Products objectCorrected = productsList.get(index);
         if (objectCorrected instanceof Meat){
             Products newProduct = creatNewMeatProduct();
             productManager.editProductByIndex(index,newProduct);

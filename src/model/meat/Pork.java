@@ -31,7 +31,6 @@ public class Pork extends Meat implements Conditions, Serializable {
                 ", weight = " + super.getWeight() +
                 "dateOfManufacturing = " + super.getDateOfManufacturing() +
                 ", shelfLife = " + getShelfLife() +
-                "shelfLife = " + getShelfLife() +
                 ", cost = " + super.getCost() +
                 "} " ;
     }

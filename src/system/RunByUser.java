@@ -37,22 +37,8 @@ public class RunByUser {
                      System.out.println("Bye!");
                      return;
                  case 1:
-                     System.out.println("╔===========================================╗");
-                     System.out.println("║   ▂ ▃ ▅ ▆ █ THÊM VÀO GIỎ HÀNG █ ▆ ▅ ▃ ▂   ║");
-                     System.out.println("╠===========================================╣");
-                     System.out.println("║>[1]. Meat                                 ║");
-                     System.out.println("║>[2]. Milk                                 ║");
-                     System.out.println("║>[3]. Egg                                  ║");
-                     System.out.println("╚===========================================╝");
+                     productUser.display();
 
-                     int number = input.nextInt();
-
-                     switch (number){
-//                         case 1: creatNewMeatProduct(); break;
-//                         case 2: creatNewMilkProduct(); break;
-//                         case 3: creatNewEggProduct(); break;
-                         default: System.out.println("Chua co mat hang nay!!! Vui long nhap lai..");
-                     }
                      break;
 
 //                 case 2: editProductByIndex();break;
@@ -63,6 +49,11 @@ public class RunByUser {
                      System.out.println("Tính năng chưa phát triển...!");
              }
          }while(true) ;
+     }
+
+
+     public void displayShop(){
+
      }
 
 }

@@ -15,6 +15,9 @@ public class ChickenEgg extends Egg implements Conditions, Serializable {
     public ChickenEgg(String dateOfManufacturing, int cost, int id, int amount) {
         super(dateOfManufacturing, cost, id, amount);
     }
+    public ChickenEgg(){
+        super();
+    }
 
     @Override
     public double getRealMoney() {
@@ -28,10 +31,10 @@ public class ChickenEgg extends Egg implements Conditions, Serializable {
 
     public String toString() {
         return "ChickenEgg {" +
+                ", id = "+getId()+
                 "amount = " + super.getAmount() +
                 ", dateOfManufacturing = " + super.getDateOfManufacturing() +
                 ", ShelfLife = "+getShelfLife()+
-                ", shelfLife = " + getShelfLife() +
                 ", cost = " + super.getCost() +
                 "} " ;
     }

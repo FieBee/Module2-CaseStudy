@@ -28,10 +28,10 @@ public class DucksEgg extends Egg implements Conditions, Serializable {
 
     public String toString() {
         return "DucksEgg {" +
-                "amount = " + super.getAmount() +
+                "id = "+getId()+
+                ", amount = " + super.getAmount() +
                 ", dateOfManufacturing = " + super.getDateOfManufacturing() +
                 ", ShelfLife = "+getShelfLife()+
-                ", shelfLife = " + getShelfLife() +
                 ", cost = " + super.getCost() +
                 "} " ;
     }
