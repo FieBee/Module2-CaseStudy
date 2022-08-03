@@ -49,8 +49,20 @@ public class AccountUserManager {
         System.out.println("------------------------------------------------");
         readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
 
+    }
 
     }
 
+    public void displayUserAccount(){
+        if (accountUserList.isEmpty()){
+            System.out.println("[❌] Chưa có tài khoản nào đăng ký !!!");
+            System.out.println("----------------------------------------------");
+        }
+        else {
+            System.err.printf("         Tài khoản khách hàng\n");
+            System.err.printf("║ %-15s ║ %-15s ║\n","Account","Password");
+            accountUserList.forEach(System.out::println);
+            System.out.println("╚===================================╝");
+        }
     }
 }
