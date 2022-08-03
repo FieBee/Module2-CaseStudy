@@ -33,4 +33,15 @@ public class UserManager {
     public void addUserInfor(UserInfor userInfor){
         userInforArrayList.add(userInfor);
     }
+
+    public void displayUserInfor(){
+        userInforArrayList = readWriteFile.readData(PATH_NAME_OF_USER);
+        if (userInforArrayList.isEmpty()){
+            System.out.println("Chưa có thông tin người dùng nào đăng kí!!");
+            System.out.println("-------------------------------------------");
+        }else {
+            userInforArrayList.forEach(System.out::println);
+        }
+
+    }
 }
