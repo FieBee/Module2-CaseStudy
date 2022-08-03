@@ -1,7 +1,5 @@
 package storage;
 
-import model.Products;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +8,12 @@ public class ReadWriteFile implements ReadWriteData{
 
 
     @Override
-    public ArrayList<Products> readData(String file) {
+    public ArrayList readData(String file) {
         try{
             FileInputStream fileInputStream = new FileInputStream(file);
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             Object ob = objectInputStream.readObject();
-            ArrayList<Products> products = (ArrayList<Products>)  ob;
+            ArrayList products = (ArrayList)  ob;
 
             return products;
 
@@ -26,7 +24,7 @@ public class ReadWriteFile implements ReadWriteData{
     }
 
     @Override
-    public void writeData(List<Products> productsList, String file) {
+    public void writeData(List productsList, String file) {
         try{
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);

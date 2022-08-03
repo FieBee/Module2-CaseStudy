@@ -1,14 +1,14 @@
 package storage;
 
-import model.Products;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public interface ReadWriteData {
+public interface ReadWriteData <E> {
 
 
-    ArrayList<Products> readData(String file);
+    ArrayList<E> readData(String file);
 
-    void writeData(List<Products> productsList, String file);
+    void writeData(List<E> productsList, String file);
+
+    void writeData(List<E> productsList, String file);
 }
