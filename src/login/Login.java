@@ -3,11 +3,15 @@ package login;
 import account.AccountAdmin;
 import account.AccountUser;
 import account.AccountUserManager;
+import system.RunByAdmin;
+import system.RunByUser;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Login {
+    RunByUser runByUser = new RunByUser();
+    RunByAdmin runByAdmin = new RunByAdmin();
     AccountUser accountUser = new AccountUser();
     AccountAdmin accountAdmin = new AccountAdmin();
     AccountUserManager accountUserManager = new AccountUserManager();
@@ -60,14 +64,37 @@ public class Login {
         login.menuLogin();
     }
 
+    public void checkAccount(String account, String password){
+        if (checkAccountAdmin(account,password)){
+            System.out.println("[\uD83D\uDD13] Đặng nhập hệ thống bởi ADMIN thành công !!!");
+            System.out.println("------------------------------------------------------------");
+            runByAdmin.menuManager();
+        } else if (checkAccountUser(account, password)) {
+            System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
+            System.out.println("----------------------------------------------------------");
+            runByUser.displayShop();
+        }
+    }
+
     public boolean checkAccountAdmin(String name, String password){
             for (AccountAdmin accAdmin : accountAdmin.getAccountsAdminList()){
-                boolean checkAccountAdmin = name.equals(accAdmin.getAdminName()) && password.equals(accAdmin.getAdminPassword());
-                if (checkAccountAdmin){
+                boolean check = name.equals(accAdmin.getAdminName()) && password.equals(accAdmin.getAdminPassword());
+                if (check){
                     return true;
                 }
             }
             return false;
+    }
+
+    public boolean checkAccountUser(String name, String password){
+        for (AccountUser accUser : accountUser.getAccountUserArrayList()){
+            boolean check = name.equals(accUser.getUserName()) && password.equals(accUser.getUserPassword());
+            if (check){
+                return true;
+            }
+            return false;
+
+        }
     }
 
 
