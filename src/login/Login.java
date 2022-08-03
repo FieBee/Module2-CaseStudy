@@ -4,15 +4,17 @@ import account.AccountAdmin;
 import account.AccountUser;
 import system.RunByAdmin;
 import system.RunByUser;
+import validate.Validate;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Login {
-    RunByUser runByUser = new RunByUser();
-    RunByAdmin runByAdmin = new RunByAdmin();
-    AccountUser accountUser = new AccountUser();
-    AccountAdmin accountAdmin = new AccountAdmin();
+    private Validate validate = new Validate();
+    private RunByUser runByUser = new RunByUser();
+    private RunByAdmin runByAdmin = new RunByAdmin();
+    private AccountUser accountUser = new AccountUser();
+    private AccountAdmin accountAdmin = new AccountAdmin();
 //    AccountUserManager accountUserManager = new AccountUserManager();
 
     Scanner scanner = new Scanner(System.in);
@@ -76,10 +78,9 @@ public class Login {
                 System.out.println("----------------------------------------------------------");
                 runByUser.displayShop();
             }else {
-                System.err.println("Tên đăng nhập hoặc mật khẩu không đúng! Mời nhập lại: ");
-                System.out.println("----------------------------------------------------------");
-                System.out.println("----------------------------------------------------------");
-                System.out.println("----------------------------------------------------------");
+                System.err.println("");
+                System.out.println("--- Tên đăng nhập hoặc mật khẩu không đúng! Mời nhập lại: ---");
+                System.out.println("-------------------------------------------------------------");
                 loginManager();
             }
         } catch (InputMismatchException e) {
@@ -109,7 +110,12 @@ public class Login {
         }return false;
     }
 
+    public void creatAccount(){
+        System.out.println("┎──────────────[ĐĂNG KÝ]──────────────┒");
+        System.out.println("[\uD83D\uDD11] Mời bạn nhập thông tin:");
+        System.out.println("--------------------------------------");
 
+    }
 
 
 
