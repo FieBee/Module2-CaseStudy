@@ -13,12 +13,13 @@ import model.milk.FreshMilk;
 import model.milk.Milk;
 import model.milk.PreparedMilk;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import static controller.ProductManager.*;
 
 public class RunByAdmin {
+
+    private AccountUserManager accountUserManager = new AccountUserManager();
     static ProductManager productManager = new ProductManager();
 
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
@@ -72,7 +73,7 @@ public class RunByAdmin {
                 case 4:
                     productManager.displayProduct();
                     break;
-                case 5: displayAccountUser();break;
+                case 5: displayAccount();break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
             }
@@ -287,8 +288,7 @@ public class RunByAdmin {
     }
 
 
-    public ArrayList displayAccountUser(){
-        ArrayList arrayList = readWriteFile.readData(AccountUserManager.PATH_NAME_OF_USER_ACCOUNT);
-        return arrayList;
+    public void displayAccount(){
+        accountUserManager.displayUserAccount();
     }
 }

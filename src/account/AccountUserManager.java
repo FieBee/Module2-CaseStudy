@@ -70,6 +70,7 @@ public class AccountUserManager implements Serializable {
     }
 
     public void displayUserAccount(){
+        accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
         if (accountUserList.isEmpty()){
             System.out.println("[❌] Chưa có tài khoản nào đăng ký !!!");
             System.out.println("----------------------------------------------");
