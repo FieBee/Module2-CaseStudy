@@ -2,9 +2,13 @@ package system;
 
 import controller.ProductManager;
 import controller.ProductUser;
+import model.Products;
 import storage.ReadWriteFile;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+
+import static controller.ProductManager.PRODUCT_MANAGEMENT;
 
 public class RunByUser {
     private ReadWriteFile readWriteFile = new ReadWriteFile();
@@ -30,8 +34,9 @@ public class RunByUser {
              System.out.println("║             ▂ ▃ ▅ ▆ █  HỆ THỐNG USER  █ ▆ ▅ ▃ ▂            ║");
              System.out.println("╠============================================================╣");
              System.out.println("║>[1]. Thêm sản phẩm vào giỏ hàng                            ║");
-             System.out.println("║>[2]. Kiểm tra giỏ hàng                                     ║");
-             System.out.println("║>[3]. Thanh toán                                            ║");
+             System.out.println("║>[2]. Xóa  sản phẩm khỏi giỏ hàng                           ║");
+             System.out.println("║>[3]. Kiểm tra giỏ hàng                                     ║");
+             System.out.println("║>[4]. Thanh toán                                            ║");
              System.out.println("║>[0]. Đăng xuất                                             ║");
              System.out.println("╚============================================================╝");
              selectOption = input.nextInt();
@@ -42,36 +47,53 @@ public class RunByUser {
                      System.out.println("Bye!");
                      return;
                  case 1:
-//                     addProduct();
-
+                     addProduct();
                      break;
 
-//                 case 2: editProductByIndex();break;
-//                 case 3: deleteProductByIndex();break;
-//                 case 4: LinkedList<Products> readData = readWriteFile.readData(MANAGER_OF_FILE) ;
-//                     System.out.println(readData);break;
+                 case 2:
+                     ;break;
+                 case 3: displayCart();break;
+                 case 4: getTotalPrice(); break;
                  default:
                      System.out.println("Tính năng chưa phát triển...!");
              }
          }while(true) ;
      }
 
-//     public void addProduct(){
-//         Scanner input = new Scanner(System.in);
-//         try{
-//             System.out.println("Nhập sản phẩm muốn thêm từ giỏ hàng: ");
-//             int select = input.nextInt();
-//
-//             ArrayList<Products> arrayListProduct =  readWriteFile.readData(PRODUCT_MANAGEMENT);
-//             productUser.addProductToCart(arrayListProduct.get(select));
-//             readWriteFile.writeData(AccountUser.cart,CART_MANAGEMENT);
-//             System.out.println("Thêm thành công!! "+ arrayListProduct.get(select));
-//         } catch (Exception e) {
-//             System.err.println("Sản phẩm không tồn tại!!!");
-//             e.getMessage();
-//         }
-//
-//
-//     }
+     public void addProduct(){
+         Scanner input = new Scanner(System.in);
+         try{
+             System.out.println("Nhập sản phẩm muốn thêm từ giỏ hàng: ");
+             int select = input.nextInt();
+
+             ArrayList<Products> arrayListProduct =  readWriteFile.readData(PRODUCT_MANAGEMENT);
+             productUser.addProductToCart(arrayListProduct.get(select));
+             readWriteFile.writeData(productUser.getCart(),productUser.CART_MANAGEMENT);
+             System.out.println("Thêm thành công!! "+ arrayListProduct.get(select));
+         } catch (Exception e) {
+             System.err.println("Sản phẩm không tồn tại!!!");
+             e.getMessage();
+         }
+
+     }
+
+     public void displayCart(){
+        ArrayList<Products> arrayList = readWriteFile.readData(productUser.CART_MANAGEMENT);
+        if (arrayList.isEmpty()){
+            System.out.println("Giỏ hàng trống!!");
+            menuUser();
+        }else {
+
+            System.out.println("Sản phẩm trong giỏ hàng: ");
+            arrayList.forEach(System.out::println);
+        }
+
+     }
+
+     public void getTotalPrice(){
+         System.out.println("Tiền phải trả là: ");
+         int totalPrice = productUser.cartPayment();
+         System.out.println(totalPrice);
+     }
 
 }

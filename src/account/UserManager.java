@@ -28,6 +28,7 @@ public class UserManager implements Serializable {
     }
 
     public ArrayList<UserInfor> getUserInforArrayList() {
+        userInforArrayList = readWriteFile.readData(INFOR_OF_USER);
         return userInforArrayList;
     }
 

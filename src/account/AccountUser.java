@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AccountUser implements Serializable {
-//    public static int numCart = 0;
+
     private String userName;
     private String userPassword;
 //    public static ArrayList<Products> cart = new ArrayList<>();
