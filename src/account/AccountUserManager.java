@@ -12,7 +12,7 @@ public class AccountUserManager implements Serializable {
 
     private final ReadWriteFile readWriteFile = new ReadWriteFile();
 
-    public final String PATH_NAME_OF_USER_ACCOUNT = "FileData/userAccount.abc";
+    public static final String PATH_NAME_OF_USER_ACCOUNT = "FileData/userAccount.abc";
 
     public AccountUserManager(){
         try{

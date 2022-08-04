@@ -1,5 +1,6 @@
 package system;
 
+import account.AccountUserManager;
 import controller.ProductManager;
 import model.Products;
 import model.egg.ChickenEgg;
@@ -12,6 +13,7 @@ import model.milk.FreshMilk;
 import model.milk.Milk;
 import model.milk.PreparedMilk;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static controller.ProductManager.*;
@@ -22,7 +24,6 @@ public class RunByAdmin {
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
     public void menuManager() {
-//        readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
         productsList =  readWriteFile.readData(PRODUCT_MANAGEMENT);
 
         Scanner input = new Scanner(System.in);
@@ -35,6 +36,7 @@ public class RunByAdmin {
             System.out.println("║>[2]. Sửa thông tin                                         ║");
             System.out.println("║>[3]. Xóa sản phẩm                                          ║");
             System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
+            System.out.println("║>[5]. Hiển thị danh sách người dùng                         ║");
             System.out.println("║>[0]. Đăng xuất                                             ║");
             System.out.println("╚============================================================╝");
             selectOption = input.nextInt();
@@ -70,6 +72,7 @@ public class RunByAdmin {
                 case 4:
                     productManager.displayProduct();
                     break;
+                case 5: displayAccountUser();break;
                 default:
                     System.out.println("Tính năng chưa phát triển...!");
             }
@@ -281,5 +284,11 @@ public class RunByAdmin {
             throw new RuntimeException(e);
         }
 
+    }
+
+
+    public ArrayList displayAccountUser(){
+        ArrayList arrayList = readWriteFile.readData(AccountUserManager.PATH_NAME_OF_USER_ACCOUNT);
+        return arrayList;
     }
 }
