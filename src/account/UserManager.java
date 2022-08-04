@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class UserManager implements Serializable {
     private ArrayList<UserInfor> userInforArrayList;
     private ReadWriteFile readWriteFile =new ReadWriteFile();
-    private final String INFOR_OF_USER = "FileData/userinfor.abc";
+    public static final String INFOR_OF_USER = "FileData/userinfor.abc";
 
     public UserManager(){
         if (!new File(INFOR_OF_USER).exists()){

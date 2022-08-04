@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AccountUserManager implements Serializable {
+
+    UserInfor userInfor  = new UserInfor();
     private ArrayList<AccountUser> accountUserList;
 
     private final ReadWriteFile readWriteFile = new ReadWriteFile();

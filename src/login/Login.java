@@ -81,7 +81,7 @@ public class Login {
             } else if (checkAccountUser(account, password)) {
                 System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
                 System.out.println("----------------------------------------------------------");
-                runByUser.displayShop();
+//                runByUser.displayShop();
                 runByUser.menuUser();
             }else {
                 System.err.println("");

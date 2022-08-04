@@ -29,54 +29,91 @@ public class RunByAdmin {
 
         Scanner input = new Scanner(System.in);
         int selectOption;
+
+
         do {
             System.out.println("╔============================================================╗");
             System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
             System.out.println("╠============================================================╣");
-            System.out.println("║>[1]. Thêm sản phẩm                                         ║");
-            System.out.println("║>[2]. Sửa thông tin                                         ║");
-            System.out.println("║>[3]. Xóa sản phẩm                                          ║");
-            System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
-            System.out.println("║>[5]. Hiển thị danh sách người dùng                         ║");
+            System.out.println("║>[1]. Quản lí sản phẩm                                      ║");
+            System.out.println("║>[2]. Quản lí người dùng                                    ║");
             System.out.println("║>[0]. Đăng xuất                                             ║");
             System.out.println("╚============================================================╝");
-            selectOption = input.nextInt();
+            int management =  input.nextInt();
 
-            switch (selectOption){
-
-                case 0:
-                    System.out.println("Bye!");
-                    return;
+            switch (management){
                 case 1:
-                    System.out.println("╔===========================================╗");
-                    System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
-                    System.out.println("╠===========================================╣");
-                    System.out.println("║>[1]. Meat                                 ║");
-                    System.out.println("║>[2]. Milk                                 ║");
-                    System.out.println("║>[3]. Egg                                  ║");
-                    System.out.println("║>[0]. Thoát                                ║");
-                    System.out.println("╚===========================================╝");
+                    System.out.println("╔============================================================╗");
+                    System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+                    System.out.println("╠============================================================╣");
+                    System.out.println("║>[1]. Thêm sản phẩm                                         ║");
+                    System.out.println("║>[2]. Sửa thông tin sản phẩm                                ║");
+                    System.out.println("║>[3]. Xóa sản phẩm                                          ║");
+                    System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
+                    System.out.println("║>[0]. Đăng xuất                                             ║");
+                    System.out.println("╚============================================================╝");
+                    selectOption = input.nextInt();
 
-                    int number = input.nextInt();
+                    switch (selectOption){
 
-                    switch (number){
-                        case 0: continue;
-                        case 1: creatNewMeatProduct(); break;
-                        case 2: creatNewMilkProduct(); break;
-                        case 3: creatNewEggProduct(); break;
-                        default: System.out.println("Chưa có mặt hàng này!!! Vui lòng thao tác lại lại..");
+                        case 0:
+                            System.out.println("Bye!");
+                            return;
+                        case 1:
+                            System.out.println("╔===========================================╗");
+                            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+                            System.out.println("╠===========================================╣");
+                            System.out.println("║>[1]. Meat                                 ║");
+                            System.out.println("║>[2]. Milk                                 ║");
+                            System.out.println("║>[3]. Egg                                  ║");
+                            System.out.println("║>[0]. Thoát                                ║");
+                            System.out.println("╚===========================================╝");
+
+                            int number = input.nextInt();
+
+                            switch (number){
+                                case 0: continue;
+                                case 1: creatNewMeatProduct(); break;
+                                case 2: creatNewMilkProduct(); break;
+                                case 3: creatNewEggProduct(); break;
+                                default: System.out.println("Chưa có mặt hàng này!!! Vui lòng thao tác lại lại..");
+                            }
+                            break;
+
+                        case 2: editProductByIndex();break;
+                        case 3: deleteProductByIndex();break;
+
+                        case 4:
+                            productManager.displayProduct();
+                            break;
+                        default:
+                            System.out.println("Tính năng chưa phát triển...!");
+                    }
+                    break;
+                case 2:
+                    System.out.println("╔============================================================╗");
+                    System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+                    System.out.println("╠============================================================╣");
+                    System.out.println("║>[1]. Danh sách người dùng                                  ║");
+                    System.out.println("║>[2].                                                       ║");
+                    System.out.println("║>[3].                                                       ║");
+                    System.out.println("║>[4].                                                       ║");
+                    System.out.println("║>[0].                                                       ║");
+                    System.out.println("╚============================================================╝");
+
+                    int management2 = input.nextInt();
+
+                    switch (management2){
+                        case 1:
+                            displayAccount();break;
+
                     }
                     break;
 
-                case 2: editProductByIndex();break;
-                case 3: deleteProductByIndex();break;
-                case 4:
-                    productManager.displayProduct();
-                    break;
-                case 5: displayAccount();break;
-                default:
-                    System.out.println("Tính năng chưa phát triển...!");
             }
+
+
+
         }while(true) ;
     }
 

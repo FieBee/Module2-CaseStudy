@@ -4,13 +4,15 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class AccountUser implements Serializable {
-//    private static final long serialVersionUID = 6128016096756071380L;
+//    public static int numCart = 0;
     private String userName;
     private String userPassword;
+//    public static ArrayList<Products> cart = new ArrayList<>();
 
     private ArrayList<AccountUser> accountUserArrayList = new ArrayList<>();
 
     public AccountUser(String userName, String userPassword) {
+//        cart = new ArrayList<>();
         this.userName = userName;
         this.userPassword = userPassword;
     }
