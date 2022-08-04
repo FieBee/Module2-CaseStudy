@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class UserManager {
     private ArrayList<UserInfor> userInforArrayList;
     private ReadWriteFile readWriteFile =new ReadWriteFile();
-    private final String PATH_NAME_OF_USER = "FileData/userinfor";
+    private final String PATH_NAME_OF_USER = "FileData/userinfor.abc";
 
     public UserManager(){
         if (!new File(PATH_NAME_OF_USER).exists()){

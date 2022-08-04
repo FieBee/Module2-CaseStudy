@@ -1,7 +1,7 @@
 package login;
 
 import account.*;
-//import account.User;
+import storage.ReadWriteFile;
 import system.RunByAdmin;
 import system.RunByUser;
 import validate.Validate;
@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 public class Login {
 
+    private ReadWriteFile readWriteFile = new ReadWriteFile();
     private AccountUserManager accountUserManager = new AccountUserManager();
     private UserManager userManager = new UserManager();
     private UserInfor userInfor = new UserInfor();
@@ -28,7 +29,7 @@ public class Login {
     public Login() {
     }
 
-    public void menuLogin() throws NumberFormatException {
+    public void menuLogin() {
         do {
             System.out.println("╔============================================╗");
             System.out.println("║   ▂ ▃ ▅ ▆ █     EIYOU SHOP    █ ▆ ▅ ▃ ▂    ║");
@@ -69,10 +70,7 @@ public class Login {
         }
     }
 
-    public static void main(String[] args) {
-        Login login = new Login();
-        login.menuLogin();
-    }
+
 
     public void checkAccount(String account, String password){
         try {
@@ -84,6 +82,7 @@ public class Login {
                 System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
                 System.out.println("----------------------------------------------------------");
                 runByUser.displayShop();
+                runByUser.menuUser();
             }else {
                 System.err.println("");
                 System.out.println("--- Tên đăng nhập hoặc mật khẩu không đúng! Mời nhập lại: ---");
@@ -107,6 +106,9 @@ public class Login {
     }
 
     public boolean checkAccountUser(String name, String password){
+
+        String file = accountUserManager.getPATH_NAME_OF_USER_ACCOUNT();
+        accountUser.setAccountUserArrayList(readWriteFile.readData(file) );
         for (AccountUser accUser : accountUser.getAccountUserArrayList()){
             boolean check = name.equals(accUser.getUserName()) && password.equals(accUser.getUserPassword());
             if (check){
@@ -117,6 +119,11 @@ public class Login {
         }return false;
     }
 
+    public static void main(String[] args) {
+        Login login = new Login();
+        login.menuLogin();
+
+    }
     public void creatAccount(){
         Scanner input = new Scanner(System.in);
         System.out.println("┎──────────────[ĐĂNG KÝ]──────────────┒");
@@ -134,15 +141,14 @@ public class Login {
         checkAccountUser(accountName, accountPassword, name, address, phoneNumber, email);
     }
 
-
     public String checkAccountName() {
         String accountUser;
         while (true) {
-            System.out.print("┠ ▹ Nhập tài khoản: ");
+            System.out.print("┠ ▹ Nhập tài khoản (8 - 12 ký tự (a,1,...): ");
             String account = scanner.nextLine();
             if (!validate.validateAccount(account)) {
                 System.out.println("[❌] Tài khoản không hợp lệ !!!");
-                System.out.println(">[Chú ý]: Tài khoản phải từ 8 - 12 ký tự (a,1,...)");
+//                System.out.println(">[Chú ý]: Tài khoản phải từ 8 - 12 ký tự (a,1,...)");
                 System.out.println("---------------------------------------------------");
             } else {
                 accountUser = account;
@@ -155,11 +161,11 @@ public class Login {
     public String checkPassword() {
         String passwordUser;
         while (true) {
-            System.out.print("┠ ▹ Nhập passwword: ");
+            System.out.print("┠ ▹ Nhập passwword (8 - 16 ký tự (a,A,1,...)): ");
             String password = scanner.nextLine();
             if (!validate.validatePassword(password)) {
                 System.out.println("[❌] Mật khẩu không hợp lệ !!!");
-                System.out.println(">[Chú ý]: Mật khẩu phải từ 8 - 16 ký tự (a,A,1,...)hoặc ký tự đặc biệt");
+//                System.out.println(">[Chú ý]: Mật khẩu phải từ 8 - 16 ký tự (a,A,1,...)hoặc ký tự đặc biệt");
                 System.out.println("-----------------------------------------");
             } else {
                 passwordUser = password;
@@ -176,7 +182,7 @@ public class Login {
             String phone = scanner.nextLine();
             if (!validate.validatePhone(phone)) {
                 System.out.println("[❌] Số điện thoại không hợp lệ !!!");
-                System.out.println(">[Chú ý]: Số điện thoại phải có 10 số (0 - 9) định dạng: (+84)-911112222");
+                System.out.println(">[Chú ý]: Số điện thoại phải có 10 số: ");
                 System.out.println("------------------------------------------");
             } else {
                 phoneNumber = phone;

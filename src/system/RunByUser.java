@@ -10,10 +10,10 @@ public class RunByUser {
     private static ProductManager productManager = new ProductManager();
 
 
-    public static void main(String[] args) {
-        menuUser();
-    }
-     public static void menuUser(){
+//    public static void main(String[] args) {
+//        menuUser();
+//    }
+     public void menuUser(){
          Scanner input = new Scanner(System.in);
          int selectOption;
          do {

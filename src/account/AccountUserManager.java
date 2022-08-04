@@ -4,28 +4,31 @@ import storage.ReadWriteFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AccountUserManager {
+public class AccountUserManager implements Serializable {
     private ArrayList<AccountUser> accountUserList;
 
     private final ReadWriteFile readWriteFile = new ReadWriteFile();
 
-    private final String PATH_NAME_OF_USER_ACCOUNT = "FileData/userAccount";
+    public final String PATH_NAME_OF_USER_ACCOUNT = "FileData/userAccount.abc";
 
     public AccountUserManager(){
-        if (!new File(PATH_NAME_OF_USER_ACCOUNT).exists()){
-            try{
+        try{
+            if (!new File(PATH_NAME_OF_USER_ACCOUNT).exists()){
                 new File(PATH_NAME_OF_USER_ACCOUNT).createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
             }
+            if (new File(PATH_NAME_OF_USER_ACCOUNT).length() == 0){
+                this.accountUserList =new ArrayList<>();
+            }else {
+
+                this.accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
+            }
+        } catch (IOException e) {
+            e.getMessage();
         }
-        if (new File(PATH_NAME_OF_USER_ACCOUNT).length() == 0){
-            this.accountUserList =new ArrayList<>();
-        }else {
-            this.accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
-        }
+
     }
 
     public ArrayList<AccountUser> getUserAccounts() {
@@ -33,8 +36,21 @@ public class AccountUserManager {
     }
 
     public void addAccount(AccountUser accountUser){
-        accountUserList.add(accountUser);
-        readWriteFile.writeData(accountUserList, PATH_NAME_OF_USER_ACCOUNT);
+        try{
+            if (!new File(PATH_NAME_OF_USER_ACCOUNT).exists()){
+                new File(PATH_NAME_OF_USER_ACCOUNT).createNewFile();
+            }
+            if (new File(PATH_NAME_OF_USER_ACCOUNT).length() == 0){
+                this.accountUserList =new ArrayList<>();
+            }else {
+                this.accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
+            }
+            accountUserList.add(accountUser);
+            readWriteFile.writeData(accountUserList, PATH_NAME_OF_USER_ACCOUNT);
+        } catch (IOException e) {
+            e.getMessage();
+        }
+
     }
 
 
@@ -64,5 +80,9 @@ public class AccountUserManager {
             accountUserList.forEach(System.out::println);
             System.out.println("╚===================================╝");
         }
+    }
+
+    public String getPATH_NAME_OF_USER_ACCOUNT() {
+        return PATH_NAME_OF_USER_ACCOUNT;
     }
 }

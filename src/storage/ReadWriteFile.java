@@ -32,7 +32,7 @@ public class ReadWriteFile implements ReadWriteData{
             objectOutputStream.close();
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.getMessage();
         }
     }
 }

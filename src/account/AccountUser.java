@@ -1,13 +1,14 @@
 package account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AccountUser {
-
+public class AccountUser implements Serializable {
+//    private static final long serialVersionUID = 6128016096756071380L;
     private String userName;
     private String userPassword;
 
-    private final ArrayList<AccountUser> accountUserArrayList = new ArrayList<>();
+    private ArrayList<AccountUser> accountUserArrayList = new ArrayList<>();
 
     public AccountUser(String userName, String userPassword) {
         this.userName = userName;
@@ -35,6 +36,11 @@ public class AccountUser {
     public ArrayList<AccountUser> getAccountUserArrayList() {
         return accountUserArrayList;
     }
+
+    public void setAccountUserArrayList(ArrayList<AccountUser> users) {
+        this.accountUserArrayList = users;
+    }
+
 
     @Override
     public String toString() {

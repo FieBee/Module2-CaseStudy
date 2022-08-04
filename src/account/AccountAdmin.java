@@ -1,8 +1,9 @@
 package account;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AccountAdmin {
+public class AccountAdmin implements Serializable {
     private String adminName;
     private String adminPassword;
     private final ArrayList<AccountAdmin> accountsAdminList = new ArrayList<AccountAdmin>();

@@ -1,12 +1,14 @@
 package view;
 
 
+import login.Login;
 import storage.ReadWriteFile;
 import system.RunByAdmin;
 
 
 
 public class Client {
+//    Login login = new Login();
     private static RunByAdmin admin = new RunByAdmin();
 //    private static final String CART_OF_FILE = ProductUser.CART_MANAGEMENT;
 
@@ -18,7 +20,8 @@ public class Client {
 
 
     public static void main(String[] args) {
-        admin.menuManager();
+        Login login1 = new Login();
+        login1.menuLogin();
 
     }
 
