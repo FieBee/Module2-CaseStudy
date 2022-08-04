@@ -12,7 +12,7 @@ import static controller.ProductManager.PRODUCT_MANAGEMENT;
 
 public class RunByUser {
     private ReadWriteFile readWriteFile = new ReadWriteFile();
-
+    ArrayList<Products> arrayList = readWriteFile.readData(ProductUser.CART_MANAGEMENT);
     private static ProductUser productUser = new ProductUser();
     private static ProductManager productManager = new ProductManager();
 
@@ -50,7 +50,7 @@ public class RunByUser {
                      addProduct();
                      break;
 
-                 case 2:
+                 case 2:deleteProductToCart();
                      ;break;
                  case 3: displayCart();break;
                  case 4: getTotalPrice(); break;
@@ -66,26 +66,31 @@ public class RunByUser {
              System.out.println("Nhập sản phẩm muốn thêm từ giỏ hàng: ");
              int select = input.nextInt();
 
-             ArrayList<Products> arrayListProduct =  readWriteFile.readData(PRODUCT_MANAGEMENT);
-             productUser.addProductToCart(arrayListProduct.get(select));
-             readWriteFile.writeData(productUser.getCart(),productUser.CART_MANAGEMENT);
-             System.out.println("Thêm thành công!! "+ arrayListProduct.get(select));
+             arrayList =  readWriteFile.readData(PRODUCT_MANAGEMENT);
+             productUser.addProductToCart(arrayList.get(select));
+             readWriteFile.writeData(productUser.getCart(), ProductUser.CART_MANAGEMENT);
+             System.out.println("Thêm thành công!! "+ arrayList.get(select));
          } catch (Exception e) {
              System.err.println("Sản phẩm không tồn tại!!!");
              e.getMessage();
          }
+         readWriteFile.writeData(arrayList, ProductUser.CART_MANAGEMENT);
 
      }
 
      public void displayCart(){
-        ArrayList<Products> arrayList = readWriteFile.readData(productUser.CART_MANAGEMENT);
+        int number = 0;
         if (arrayList.isEmpty()){
             System.out.println("Giỏ hàng trống!!");
             menuUser();
         }else {
 
             System.out.println("Sản phẩm trong giỏ hàng: ");
-            arrayList.forEach(System.out::println);
+            for (Products obj: arrayList
+                 ) {
+                System.out.println(number +". "+ obj);
+                number++;
+            }
         }
 
      }
@@ -96,4 +101,22 @@ public class RunByUser {
          System.out.println(totalPrice);
      }
 
+     public void deleteProductToCart(){
+         Scanner input = new Scanner(System.in);
+         System.out.println("Nhập vị trí sản phẩm muốn xóa khỏi giỏ hàng: ");
+         int index = input.nextInt();
+         arrayList = readWriteFile.readData(ProductUser.CART_MANAGEMENT);
+         if (index>=arrayList.size() || index<0){
+             System.out.println("Sản phẩm không tồn tại trong giỏ hàng!!!");
+         }else{
+             System.out.println("Xóa thành công!!");
+             System.out.println(arrayList.get(index));
+             arrayList.remove(index);
+
+             System.out.println("Giỏ hàng: ");
+             arrayList.forEach(System.out::println);
+         }
+         readWriteFile.writeData(arrayList, ProductUser.CART_MANAGEMENT);
+
+     }
 }
