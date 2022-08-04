@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class ProductManager {
 
-    public static final String PRODUCT_MANAGEMENT = "ProductManagement.pku0ng";
+    public static final String PRODUCT_MANAGEMENT = "FileData/ProductManagement.abc";
     public static ReadWriteData readWriteFile = new ReadWriteFile();
     private static int count = 1;
     public static List<Products> productsList = new ArrayList<>();
@@ -40,7 +40,7 @@ public class ProductManager {
     }
 
     public void displayProduct(){
-        count=1;
+        count=0;
         try{
             ArrayList<Products> displayFile = readWriteFile.readData(PRODUCT_MANAGEMENT);
             for (Products elm: displayFile

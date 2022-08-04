@@ -32,7 +32,7 @@ public class ChickenEgg extends Egg implements Conditions, Serializable {
     public String toString() {
         return "ChickenEgg {" +
                 ", id = "+getId()+
-                "amount = " + super.getAmount() +
+                ", amount = " + super.getAmount() +
                 ", dateOfManufacturing = " + super.getDateOfManufacturing() +
                 ", ShelfLife = "+getShelfLife()+
                 ", cost = " + super.getCost() +
