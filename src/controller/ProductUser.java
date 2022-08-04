@@ -1,4 +1,4 @@
-package controller;
+package FileData;
 
 import model.Products;
 import storage.ReadWriteData;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class ProductUser {
     private ReadWriteData readWriteData = new ReadWriteFile();
     private ArrayList<Products> cart = readWriteData.readData(CART_MANAGEMENT);
-    public static final String CART_MANAGEMENT = "FileData/CartManagement.abc";
+    public static final String CART_MANAGEMENT = "FileData/CartManagement.phuong";
 
 
 
@@ -29,6 +29,7 @@ public class ProductUser {
 
 
     public int cartPayment(){
+        cart = readWriteData.readData(CART_MANAGEMENT);
         int sum = 0;
         for (int i = 0; i < cart.size(); i++) {
             sum += cart.get(i).getCost();
