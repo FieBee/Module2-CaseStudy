@@ -55,7 +55,9 @@ public class UserManager implements Serializable {
             System.out.println("Chưa có thông tin người dùng nào đăng kí!!");
             System.out.println("-------------------------------------------");
         }else {
+            System.out.println("    nameUser  -  phonenumberUser  -  emailUser  -  addressUser");
             userInforArrayList.forEach(System.out::println);
+            System.out.println("--------------------------------------------");
         }
 
     }

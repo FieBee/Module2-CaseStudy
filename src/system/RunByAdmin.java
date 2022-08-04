@@ -1,6 +1,7 @@
 package system;
 
 import account.AccountUserManager;
+import account.UserManager;
 import controller.ProductManager;
 import model.Products;
 import model.egg.ChickenEgg;
@@ -19,6 +20,7 @@ import static controller.ProductManager.*;
 
 public class RunByAdmin {
 
+    UserManager userManager = new UserManager();
     private AccountUserManager accountUserManager = new AccountUserManager();
     static ProductManager productManager = new ProductManager();
 
@@ -96,10 +98,10 @@ public class RunByAdmin {
                     System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
                     System.out.println("╠============================================================╣");
                     System.out.println("║>[1]. Danh sách người dùng                                  ║");
-                    System.out.println("║>[2].                                                       ║");
-                    System.out.println("║>[3].                                                       ║");
+                    System.out.println("║>[2]. Thông tin người dùng                                  ║");
+                    System.out.println("║>[3]. Xóa tài khoản                                         ║");
                     System.out.println("║>[4].                                                       ║");
-                    System.out.println("║>[0]. Thoát                                                     ║");
+                    System.out.println("║>[0]. Thoát                                                 ║");
                     System.out.println("╚============================================================╝");
 
                     int management2 = input.nextInt();
@@ -108,7 +110,14 @@ public class RunByAdmin {
                         case 0: break;
                         case 1:
                             displayAccount();break;
-
+                        case 2:
+                            userManager.displayUserInfor();break;
+                        case 3:
+                            accountUserManager.deleteAccount();break;
+                        case 4:
+                        default:
+                            System.out.println("Tính năng chưa phát triển!!!");
+                            break;
                     }
                     break;
 

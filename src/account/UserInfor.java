@@ -50,8 +50,9 @@ public class UserInfor implements Serializable {
         this.addressUser = addressUser;
     }
 
-    @Override
+
     public String toString() {
-        return String.format("║ %-15s ║ %-16s ║ %-22s ║ %-30s ║", nameUser, phonenumberUser, emailUser, addressUser);
+        System.out.println(nameUser + "  -  "+ phonenumberUser + "  -  "+  emailUser + "  -  "+  addressUser );
+        return null;
     }
 }

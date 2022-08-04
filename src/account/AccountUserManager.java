@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AccountUserManager implements Serializable {
 
@@ -50,22 +51,33 @@ public class AccountUserManager implements Serializable {
             accountUserList.add(accountUser);
             readWriteFile.writeData(accountUserList, PATH_NAME_OF_USER_ACCOUNT);
         } catch (IOException e) {
-            e.getMessage();
+            System.err.println("Lỗi khi thêm tài khoản!!!");;
         }
 
     }
 
 
 //    removeIf(): loại bỏ phần tử của colection thỏa mãn điều kiện đã cho
-    public void deleteAccount(String userAccount){
-        boolean check = accountUserList.removeIf(a -> a.getUserName().equalsIgnoreCase(userAccount));
+    public void deleteAccount(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Nhập tên tài khoản muốn xóa (User): ");
+        String userAccount = input.nextLine();
+        boolean check = false;
+        for (int i = 0; i < accountUserList.size(); i++) {
+            if (accountUserList.get(i).getUserName().equalsIgnoreCase(userAccount)){
+                accountUserList.remove(i);
+                check = true;
+                break;
+            }
+        };
         if (check){
+            accountUserList.removeIf(a -> a.getUserName().equalsIgnoreCase(userAccount));
             System.out.println("[\uD83D\uDC4C] Xóa tài khoản " + userAccount + " thành công ");
             System.out.println("-----------------------------------------------------");
         } else {
-        System.out.println("[❌] Không tìm thấy tài khoản trên");
+        System.out.println("Tài khoản không tồn tại!!");
         System.out.println("------------------------------------------------");
-        readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
+        readWriteFile.writeData(accountUserList,PATH_NAME_OF_USER_ACCOUNT);
 
     }
 
