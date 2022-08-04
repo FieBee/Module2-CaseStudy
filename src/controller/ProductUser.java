@@ -1,4 +1,4 @@
-package FileData;
+package controller;
 
 import model.Products;
 import storage.ReadWriteData;
@@ -7,13 +7,10 @@ import storage.ReadWriteFile;
 import java.util.ArrayList;
 
 public class ProductUser {
-    private ReadWriteData readWriteData = new ReadWriteFile();
+    private ReadWriteData readWriteData = ReadWriteFile.getInstance();
     private ArrayList<Products> cart = readWriteData.readData(CART_MANAGEMENT);
     public static final String CART_MANAGEMENT = "FileData/CartManagement.phuong";
 
-
-
-    ProductManager productManager = new ProductManager();
 
     public void addProductToCart(Products product){
 

@@ -6,6 +6,14 @@ import java.util.List;
 
 public class ReadWriteFile implements ReadWriteData{
 
+    private static ReadWriteFile instance = null;
+    private ReadWriteFile() {
+    }
+
+    public static ReadWriteFile getInstance() {
+        if (instance == null) instance = new ReadWriteFile();
+        return instance;
+    }
 
     @Override
     public ArrayList readData(String file) {

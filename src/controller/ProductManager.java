@@ -10,13 +10,20 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ProductManager {
+    private static ProductManager instance = null;
+    private ProductManager() {
+    }
 
-    public static final String PRODUCT_MANAGEMENT = "FileData/ProductManagement.abc";
-    public static ReadWriteData readWriteFile = new ReadWriteFile();
+    public static ProductManager getInstance(){
+        if (instance == null ) instance = new ProductManager();
+        return instance;
+    }
+
+    public static final String PRODUCT_MANAGEMENT = "FileData/ProductManagement.pku0ng";
+    public static ReadWriteData readWriteFile = ReadWriteFile.getInstance();
     private static int count = 1;
     public static List<Products> productsList = new ArrayList<>();
     ArrayList<Products> productsArrayList;
-//    public static List<Products> productsList = readWriteFile.readData(PRODUCT_MANAGEMENT);
 
 
 

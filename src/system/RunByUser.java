@@ -14,17 +14,22 @@ import java.util.Scanner;
 import static controller.ProductManager.PRODUCT_MANAGEMENT;
 
 public class RunByUser {
+    private static RunByUser instance = null;
+    private RunByUser() {
+    }
+
+    public static RunByUser getInstance(){
+        if (instance == null) instance = new RunByUser();
+        return instance;
+    }
+
     private ArrayList<Bill> billArrayList = new ArrayList<>();
-    private ReadWriteFile readWriteFile = new ReadWriteFile();
+    private ReadWriteFile readWriteFile = ReadWriteFile.getInstance();
     ArrayList<Products> arrayList = readWriteFile.readData(ProductUser.CART_MANAGEMENT);
     private static ProductUser productUser = new ProductUser();
-    private static ProductManager productManager = new ProductManager();
+    private static ProductManager productManager = ProductManager.getInstance();
 
 
-    public static void main(String[] args) {
-        RunByUser runByUser = new RunByUser();
-        runByUser.menuUser();
-    }
      public void menuUser(){
          Scanner input = new Scanner(System.in);
          int selectOption;

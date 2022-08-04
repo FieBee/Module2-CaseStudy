@@ -3,6 +3,7 @@ package system;
 import account.AccountUserManager;
 import account.UserManager;
 import controller.ProductManager;
+import login.Login;
 import model.Products;
 import model.egg.ChickenEgg;
 import model.egg.DucksEgg;
@@ -20,9 +21,18 @@ import static controller.ProductManager.*;
 
 public class RunByAdmin {
 
+    private static RunByAdmin instance = null;
+    private RunByAdmin(){}
+
+    public static RunByAdmin getInstance(){
+        if (instance == null) instance = new RunByAdmin();
+        return instance;
+    }
+
+
     UserManager userManager = new UserManager();
     private AccountUserManager accountUserManager = new AccountUserManager();
-    static ProductManager productManager = new ProductManager();
+    static ProductManager productManager = ProductManager.getInstance();
 
     public final String SUCCESSFUL_NEW_CREATION = "Thao tác thành công!! ";
 
@@ -44,7 +54,9 @@ public class RunByAdmin {
             int management =  input.nextInt();
 
             switch (management){
-                case 0: menuManager();break;
+                case 0:
+                    Login login = new Login();
+                    login.menuLogin();break ;
                 case 1:
                     System.out.println("╔============================================================╗");
                     System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
@@ -191,9 +203,6 @@ public class RunByAdmin {
         return null;
     }
 
-    public static void main(String[] args) {
-    }
-
     public Products creatNewMilkProduct(){
         Scanner input = new Scanner(System.in);
 
@@ -256,10 +265,10 @@ public class RunByAdmin {
         try {
             int select;
             System.out.println("╔===========================================╗");
-            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("║                THÊM SẢN PHẨM              ║");
             System.out.println("╠===========================================╣");
-            System.out.println("║>[1]. ChickenEgg                           ║");
-            System.out.println("║>[2]. DucksEgg                             ║");
+            System.out.println("║  1.  ChickenEgg                           ║");
+            System.out.println("║  2.  DucksEgg                             ║");
             System.out.println("╚===========================================╝");
             select = input.nextInt();
 

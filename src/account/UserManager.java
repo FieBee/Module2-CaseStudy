@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class UserManager implements Serializable {
     private ArrayList<UserInfor> userInforArrayList;
-    private ReadWriteFile readWriteFile =new ReadWriteFile();
+    private ReadWriteFile readWriteFile = ReadWriteFile.getInstance();
     public static final String INFOR_OF_USER = "FileData/userinfor.abc";
 
     public UserManager(){

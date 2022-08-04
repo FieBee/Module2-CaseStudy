@@ -11,21 +11,19 @@ import java.util.Scanner;
 
 public class Login {
 
-    private ReadWriteFile readWriteFile = new ReadWriteFile();
+    private ReadWriteFile readWriteFile = ReadWriteFile.getInstance();
     private AccountUserManager accountUserManager = new AccountUserManager();
     private UserManager userManager = new UserManager();
+
     private UserInfor userInfor = new UserInfor();
-    private Validate validate = new Validate();
-    private RunByUser runByUser = new RunByUser();
-    private RunByAdmin runByAdmin = new RunByAdmin();
+    private Validate validate = Validate.getInstance();
+    private RunByUser runByUser = RunByUser.getInstance();
+    private RunByAdmin runByAdmin = RunByAdmin.getInstance();
     private AccountUser accountUser = new AccountUser();
     private AccountAdmin accountAdmin = new AccountAdmin();
 
     public static String accountName = "";
 
-//    private NewAccount newAccount = new NewAccount();
-
-//    AccountUserManager accountUserManager = new AccountUserManager();
 
     Scanner scanner = new Scanner(System.in);
     public Login() {
@@ -82,11 +80,11 @@ public class Login {
     public void checkAccount(String account, String password){
         try {
             if (checkAccountAdmin(account,password)){
-                System.out.println("[\uD83D\uDD13] Đặng nhập hệ thống bởi ADMIN thành công !!!");
+                System.out.println("[\uD83D\uDD13] Đặng nhập thành công (ADMIN) !!!");
                 System.out.println("------------------------------------------------------------");
                 runByAdmin.menuManager();
             } else if (checkAccountUser(account, password)) {
-                System.out.println("[\uD83D\uDD13] Đăng nhập hệ thống bởi USER thành công !!!");
+                System.out.println("[\uD83D\uDD13] Đăng nhập thành công (USER) !!!");
                 System.out.println("----------------------------------------------------------");
 //                runByUser.displayShop();
                 runByUser.menuUser();

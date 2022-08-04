@@ -13,7 +13,7 @@ public class AccountUserManager implements Serializable {
     UserInfor userInfor  = new UserInfor();
     private ArrayList<AccountUser> accountUserList;
 
-    private final ReadWriteFile readWriteFile = new ReadWriteFile();
+    private final ReadWriteFile readWriteFile = ReadWriteFile.getInstance();
 
     public static final String PATH_NAME_OF_USER_ACCOUNT = "FileData/userAccount.abc";
 
@@ -59,6 +59,7 @@ public class AccountUserManager implements Serializable {
 
 //    removeIf(): loại bỏ phần tử của colection thỏa mãn điều kiện đã cho
     public void deleteAccount(){
+        accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập tên tài khoản muốn xóa (User): ");
         String userAccount = input.nextLine();
