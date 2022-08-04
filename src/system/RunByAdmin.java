@@ -42,6 +42,7 @@ public class RunByAdmin {
             int management =  input.nextInt();
 
             switch (management){
+                case 0: menuManager();break;
                 case 1:
                     System.out.println("╔============================================================╗");
                     System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
@@ -72,7 +73,7 @@ public class RunByAdmin {
                             int number = input.nextInt();
 
                             switch (number){
-                                case 0: continue;
+                                case 0: break;
                                 case 1: creatNewMeatProduct(); break;
                                 case 2: creatNewMilkProduct(); break;
                                 case 3: creatNewEggProduct(); break;
@@ -98,12 +99,13 @@ public class RunByAdmin {
                     System.out.println("║>[2].                                                       ║");
                     System.out.println("║>[3].                                                       ║");
                     System.out.println("║>[4].                                                       ║");
-                    System.out.println("║>[0].                                                       ║");
+                    System.out.println("║>[0]. Thoát                                                     ║");
                     System.out.println("╚============================================================╝");
 
                     int management2 = input.nextInt();
 
                     switch (management2){
+                        case 0: break;
                         case 1:
                             displayAccount();break;
 

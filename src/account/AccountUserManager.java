@@ -72,16 +72,22 @@ public class AccountUserManager implements Serializable {
     }
 
     public void displayUserAccount(){
+        int number = 1;
         accountUserList = readWriteFile.readData(PATH_NAME_OF_USER_ACCOUNT);
         if (accountUserList.isEmpty()){
             System.out.println("[❌] Chưa có tài khoản nào đăng ký !!!");
             System.out.println("----------------------------------------------");
         }
         else {
-            System.err.printf("         Tài khoản khách hàng\n");
-            System.err.printf("║ %-15s ║ %-15s ║\n","Account","Password");
-            accountUserList.forEach(System.out::println);
-            System.out.println("╚===================================╝");
+            System.err.printf("         Tài khoản khách hàng (Account-Password)    ");
+            System.err.printf("\n");
+            for (AccountUser account: accountUserList
+                 ) {
+                System.out.println(number+". " + account);
+                number++;
+            }
+            System.out.println("");
+            System.out.println("");
         }
     }
 

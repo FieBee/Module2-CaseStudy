@@ -21,6 +21,8 @@ public class Login {
     private AccountUser accountUser = new AccountUser();
     private AccountAdmin accountAdmin = new AccountAdmin();
 
+    public static String accountName = "";
+
 //    private NewAccount newAccount = new NewAccount();
 
 //    AccountUserManager accountUserManager = new AccountUserManager();
@@ -39,6 +41,7 @@ public class Login {
             System.out.println("║>[0]. Thoát                                 ║");
             System.out.println("╚============================================╝");
             System.out.print("[\uD83D\uDC4B] Nhập lựa chọn: ");
+            System.out.println("");
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
@@ -61,9 +64,13 @@ public class Login {
             System.out.println("┎──────────────[ĐĂNG NHẬP]──────────────┒");
             System.out.print("┠ ▹ Nhập tài khoản: ");
             String account = scanner.nextLine();
+
+            Login.accountName = account;
+
             System.out.print("┠ ▹ Nhập mật khẩu: ");
             String password = scanner.nextLine();
             System.out.println("┖───────────────────────────────────────┚");
+            System.out.println("");
             checkAccount(account,password);
         } catch (Exception e) {
             e.getMessage();
@@ -119,11 +126,7 @@ public class Login {
         }return false;
     }
 
-    public static void main(String[] args) {
-        Login login = new Login();
-        login.menuLogin();
 
-    }
     public void creatAccount(){
         Scanner input = new Scanner(System.in);
         System.out.println("┎──────────────[ĐĂNG KÝ]──────────────┒");
@@ -138,6 +141,7 @@ public class Login {
         String phoneNumber = checkPhoneNumber();
         String email = checkEmail();
         System.out.println("┖─────────────────────────────────────┚");
+        System.out.println("");
         checkAccountUser(accountName, accountPassword, name, address, phoneNumber, email);
     }
 
@@ -216,7 +220,7 @@ public class Login {
         } else {
             userManager.addUserInfor(new UserInfor(name,phoneNumber,address,email));
             accountUserManager.addAccount(new AccountUser(accountUser,passwordUser));
-            System.out.println("[\uD83D\uDC4C] Đăng ký thành công. Mời đăng nhập vào hệ thống !!!");
+            System.out.println("[\uD83D\uDC4C] Đăng ký thành công !!!");
             System.out.println("----------------------------------------");
             System.out.println();
         }

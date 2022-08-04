@@ -2,15 +2,19 @@ package system;
 
 import controller.ProductManager;
 import controller.ProductUser;
+import login.Login;
+import model.Bill;
 import model.Products;
 import storage.ReadWriteFile;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 import static controller.ProductManager.PRODUCT_MANAGEMENT;
 
 public class RunByUser {
+    private ArrayList<Bill> billArrayList = new ArrayList<>();
     private ReadWriteFile readWriteFile = new ReadWriteFile();
     ArrayList<Products> arrayList = readWriteFile.readData(ProductUser.CART_MANAGEMENT);
     private static ProductUser productUser = new ProductUser();
@@ -96,9 +100,11 @@ public class RunByUser {
      }
 
      public void getTotalPrice(){
-         System.out.println("Tiền phải trả là: ");
+         System.out.println("Hóa đơn của bạn: ");
          int totalPrice = productUser.cartPayment();
-         System.out.println(totalPrice);
+         Bill bill = new Bill(Login.accountName, arrayList,totalPrice, LocalDateTime.now());
+         bill.display();
+
      }
 
      public void deleteProductToCart(){
@@ -119,4 +125,6 @@ public class RunByUser {
          readWriteFile.writeData(arrayList, ProductUser.CART_MANAGEMENT);
 
      }
+
+
 }

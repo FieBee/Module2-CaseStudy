@@ -7,10 +7,10 @@ import storage.ReadWriteFile;
 import java.util.ArrayList;
 
 public class ProductUser {
-
-    private ArrayList<Products> cart = new ArrayList<>();
-    public static final String CART_MANAGEMENT = "CartManagement.phuong";
     private ReadWriteData readWriteData = new ReadWriteFile();
+    private ArrayList<Products> cart = readWriteData.readData(CART_MANAGEMENT);
+    public static final String CART_MANAGEMENT = "CartManagement.phuong";
+
 
 
     ProductManager productManager = new ProductManager();
@@ -27,9 +27,8 @@ public class ProductUser {
     }
 
 
-//    Thanh toán
+
     public int cartPayment(){
-        cart = readWriteData.readData(CART_MANAGEMENT);
         int sum = 0;
         for (int i = 0; i < cart.size(); i++) {
             sum += cart.get(i).getCost();
@@ -39,5 +38,11 @@ public class ProductUser {
 
     public ArrayList<Products> getCart() {
         return cart;
+    }
+
+    public void writeBill(){
+        for (int i = 0; i < cart.size(); i++) {
+
+        }
     }
 }

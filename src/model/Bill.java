@@ -20,6 +20,11 @@ public class Bill implements Serializable {
         this.purchaseDate = purchaseDate;
     }
 
+    public Bill() {
+    }
+
+
+
     public ArrayList<Products> getProduct() {
         return product;
     }
@@ -37,11 +42,16 @@ public class Bill implements Serializable {
     }
 
     public void display() {
+        int number = 1;
         System.out.println("╔====================================================================================================================================================╗");
-        System.out.println("\t Username:" + userName);
-        System.out.printf("║    %-5s ║    %-7s ║      %-9s ║                                    %-70s ║\n", "ID", "Giá", "Hãng", "Tên sản phẩm");
-        product.forEach(System.out::println);
-        System.out.println("  Total Price " + totalPrice + '\t' + "  Purchase Date: " + purchaseDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
+        System.out.println("║\t                                                 Username:" + userName);
+        System.out.printf("║          Sản phẩm đã mua: " +"\n");
+        for (Products products: product
+             ) {
+            System.out.println("║                     " + number + ". " + products);
+        }
+        System.out.println("║ ");
+        System.out.println("║                             Tổng cộng " + totalPrice + '\t' + "                           Date: " + purchaseDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")));
         System.out.println("╚====================================================================================================================================================╝");
     }
 
