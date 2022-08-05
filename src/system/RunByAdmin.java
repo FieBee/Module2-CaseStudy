@@ -101,7 +101,7 @@ public class RunByAdmin {
                         case 4:
                             System.out.println("Sản phẩm đang bán: ");
                             productManager.displayProduct();
-                            System.out.println(-------------------------------------------------------);
+                            System.out.println("-------------------------------------------------------");
                             System.out.println("");
                             break;
                         default:

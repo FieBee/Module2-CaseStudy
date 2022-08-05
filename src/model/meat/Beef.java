@@ -7,6 +7,52 @@ import java.time.LocalDate;
 
 public class Beef extends Meat implements Conditions, Serializable {
 
+    //    public Beef(){}
+
+//    public static class Builder {
+//        private String dateOfManufacturing;
+//        private int id;
+//        private String name;
+//        private double weight;
+//        private int cost;
+////        private String color;
+//
+//        public Builder withManufacturing(String dateOfManufacturing) {
+//            this.dateOfManufacturing = dateOfManufacturing;
+//            return this;
+//        }
+//        public Builder withId(int id) {
+//            this.id = id;
+//            return this;
+//        }
+//        public Builder withName(String name) {
+//            this.name = name;
+//            return this;
+//        }
+//        public Builder withWeight(double weight) {
+//            this.weight = weight;
+//            return this;
+//        }
+//        public Builder withCost(int cost) {
+//            this.cost = cost;
+//            return this;
+//        }
+//
+//
+//
+//        public Beef build(){
+//            Beef beef = new Beef();
+//            beef.setManufacturing(LocalDate.parse(dateOfManufacturing));
+//            beef.setCost(cost);
+//            beef.setId(id);
+//            beef.setName(name);
+//            beef.setWeight(weight);
+//            return beef;
+//        }
+//
+
+//    }
+
     private static final int EXPIRY = 7;
     public Beef() {
     }

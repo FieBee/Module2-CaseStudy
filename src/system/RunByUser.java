@@ -9,6 +9,7 @@ import storage.ReadWriteFile;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import static controller.ProductManager.PRODUCT_MANAGEMENT;
@@ -43,11 +44,11 @@ public class RunByUser {
              System.out.println("╔============================================================╗");
              System.out.println("║                            USER                            ║");
              System.out.println("╠============================================================╣");
-             System.out.println("║  1. Thêm sản phẩm vào giỏ hàng                            ║");
-             System.out.println("║  2. Xóa  sản phẩm khỏi giỏ hàng                           ║");
-             System.out.println("║  3. Kiểm tra giỏ hàng                                     ║");
-             System.out.println("║  4. Thanh toán                                            ║");
-             System.out.println("║  0. Đăng xuất                                             ║");
+             System.out.println("║  1. Thêm sản phẩm vào giỏ hàng                             ║");
+             System.out.println("║  2. Xóa  sản phẩm khỏi giỏ hàng                            ║");
+             System.out.println("║  3. Kiểm tra giỏ hàng                                      ║");
+             System.out.println("║  4. Thanh toán                                             ║");
+             System.out.println("║  0. Đăng xuất                                              ║");
              System.out.println("╚============================================================╝");
              selectOption = input.nextInt();
 
@@ -78,10 +79,11 @@ public class RunByUser {
              System.out.println("Nhập sản phẩm muốn thêm từ giỏ hàng: ");
              int select = input.nextInt();
 
-             arrayList =  readWriteFile.readData(PRODUCT_MANAGEMENT);
-             productUser.addProductToCart(arrayList.get(select));
-             readWriteFile.writeData(productUser.getCart(), ProductUser.CART_MANAGEMENT);
-             System.out.println("Thêm thành công!! "+ arrayList.get(select));
+             ArrayList<Products> arrayList1 =  readWriteFile.readData(PRODUCT_MANAGEMENT);
+
+             arrayList.add(arrayList1.get(select));
+
+             System.out.println("Thêm thành công!! "+ arrayList1.get(select));
          } catch (Exception e) {
              System.err.println("Sản phẩm không tồn tại!!!");
              e.getMessage();
@@ -90,19 +92,19 @@ public class RunByUser {
      }
 
      public void displayCart(){
-        int number = 0;
-        if (arrayList.isEmpty()){
-            System.out.println("Giỏ hàng trống!!");
-            menuUser();
-        }else {
-
-            System.out.println("Sản phẩm trong giỏ hàng: ");
-            for (Products obj: arrayList
-                 ) {
-                System.out.println(number +". "+ obj);
-                number++;
-            }
-        }
+         int number = 0;
+         if (arrayList.isEmpty()){
+             System.out.println("Giỏ hàng trống!!");
+             menuUser();
+         }else {
+             System.out.println("Sản phẩm trong giỏ hàng: ");
+             Iterator iterator = arrayList.iterator();
+             while (iterator.hasNext()){
+                 Object element = iterator.next();
+                 System.out.println(number + ". "+element);
+                 number++;
+             }
+         }
 
      }
 

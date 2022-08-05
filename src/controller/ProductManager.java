@@ -5,6 +5,7 @@ import storage.ReadWriteData;
 import storage.ReadWriteFile;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -42,22 +43,20 @@ public class ProductManager {
 
     public void deleteProductByIndex(int index){
         ArrayList<Products> productsArrayList = readWriteFile.readData(PRODUCT_MANAGEMENT);
+        System.out.println("Xóa thành công:  "+ productsArrayList.get(index));
         productsArrayList.remove(index);
+
         readWriteFile.writeData(productsArrayList,  PRODUCT_MANAGEMENT);
     }
 
     public void displayProduct(){
         count=0;
-        try{
-            ArrayList<Products> displayFile = readWriteFile.readData(PRODUCT_MANAGEMENT);
-            for (Products elm: displayFile
-            ) {
-                System.out.println(count +". "+ elm);
-                count++;
-            };
-        } catch (Exception e) {
-            System.out.println("Gian hàng trống!");
-            e.getMessage();
+        ArrayList<Products> displayFile = readWriteFile.readData(PRODUCT_MANAGEMENT);
+        Iterator iterator = displayFile.iterator();
+        while (iterator.hasNext()){
+            Object element = iterator.next();
+            System.out.println(count + ". "+element);
+            count++;
         }
 
     }
