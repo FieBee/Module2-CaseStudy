@@ -45,7 +45,7 @@ public class RunByAdmin {
 
         do {
             System.out.println("╔============================================================╗");
-            System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+            System.out.println("║                           ADMIN                            ║");
             System.out.println("╠============================================================╣");
             System.out.println("║>[1]. Quản lí sản phẩm                                      ║");
             System.out.println("║>[2]. Quản lí người dùng                                    ║");
@@ -59,13 +59,13 @@ public class RunByAdmin {
                     login.menuLogin();break ;
                 case 1:
                     System.out.println("╔============================================================╗");
-                    System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+                    System.out.println("║                           ADMIN                            ║");
                     System.out.println("╠============================================================╣");
-                    System.out.println("║>[1]. Thêm sản phẩm                                         ║");
-                    System.out.println("║>[2]. Sửa thông tin sản phẩm                                ║");
-                    System.out.println("║>[3]. Xóa sản phẩm                                          ║");
-                    System.out.println("║>[4]. Hiển thị sản phẩm                                     ║");
-                    System.out.println("║>[0]. Đăng xuất                                             ║");
+                    System.out.println("║  1. Thêm sản phẩm                                         ║");
+                    System.out.println("║  2. Sửa thông tin sản phẩm                                ║");
+                    System.out.println("║  3. Xóa sản phẩm                                          ║");
+                    System.out.println("║  4. Hiển thị sản phẩm                                     ║");
+                    System.out.println("║  0. Đăng xuất                                             ║");
                     System.out.println("╚============================================================╝");
                     selectOption = input.nextInt();
 
@@ -76,12 +76,12 @@ public class RunByAdmin {
                             return;
                         case 1:
                             System.out.println("╔===========================================╗");
-                            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+                            System.out.println("║                THÊM SẢN PHẨM              ║");
                             System.out.println("╠===========================================╣");
-                            System.out.println("║>[1]. Meat                                 ║");
-                            System.out.println("║>[2]. Milk                                 ║");
-                            System.out.println("║>[3]. Egg                                  ║");
-                            System.out.println("║>[0]. Thoát                                ║");
+                            System.out.println("║  1. Meat                                 ║");
+                            System.out.println("║  2. Milk                                 ║");
+                            System.out.println("║  3. Egg                                  ║");
+                            System.out.println("║  0. Thoát                                ║");
                             System.out.println("╚===========================================╝");
 
                             int number = input.nextInt();
@@ -99,7 +99,10 @@ public class RunByAdmin {
                         case 3: deleteProductByIndex();break;
 
                         case 4:
+                            System.out.println("Sản phẩm đang bán: ");
                             productManager.displayProduct();
+                            System.out.println(-------------------------------------------------------);
+                            System.out.println("");
                             break;
                         default:
                             System.out.println("Tính năng chưa phát triển...!");
@@ -107,13 +110,13 @@ public class RunByAdmin {
                     break;
                 case 2:
                     System.out.println("╔============================================================╗");
-                    System.out.println("║              ▂ ▃ ▅ ▆ █ HỆ THỐNG ADMIN █ ▆ ▅ ▃ ▂            ║");
+                    System.out.println("║                           ADMIN                            ║");
                     System.out.println("╠============================================================╣");
-                    System.out.println("║>[1]. Danh sách người dùng                                  ║");
-                    System.out.println("║>[2]. Thông tin người dùng                                  ║");
-                    System.out.println("║>[3]. Xóa tài khoản                                         ║");
-                    System.out.println("║>[4].                                                       ║");
-                    System.out.println("║>[0]. Thoát                                                 ║");
+                    System.out.println("║  1. Danh sách người dùng                                  ║");
+                    System.out.println("║  2. Thông tin người dùng                                  ║");
+                    System.out.println("║  3. Xóa tài khoản                                         ║");
+                    System.out.println("║  4.                                                       ║");
+                    System.out.println("║  0. Thoát                                                 ║");
                     System.out.println("╚============================================================╝");
 
                     int management2 = input.nextInt();
@@ -147,11 +150,11 @@ public class RunByAdmin {
         try {
             int select;
             System.out.println("╔===========================================╗");
-            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("║               THÊM SẢN PHẨM               ║");
             System.out.println("╠===========================================╣");
-            System.out.println("║>[1]. Beef                                 ║");
-            System.out.println("║>[2]. Chicken                              ║");
-            System.out.println("║>[3]. Pork                                 ║");
+            System.out.println("║  1. Beef                                  ║");
+            System.out.println("║  2. Chicken                               ║");
+            System.out.println("║  3. Pork                                  ║");
             System.out.println("╚===========================================╝");
             select = input.nextInt();
 
@@ -209,10 +212,10 @@ public class RunByAdmin {
         try {
             int select;
             System.out.println("╔===========================================╗");
-            System.out.println("║     ▂ ▃ ▅ ▆ █ THÊM SẢN PHẨM  █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("║                THÊM SẢN PHẨM              ║");
             System.out.println("╠===========================================╣");
-            System.out.println("║>[1]. FreshMilk                            ║");
-            System.out.println("║>[2]. PreparedMilk                         ║");
+            System.out.println("║  1. FreshMilk                             ║");
+            System.out.println("║  2. PreparedMilk                          ║");
             System.out.println("╚===========================================╝");
             select = input.nextInt();
 

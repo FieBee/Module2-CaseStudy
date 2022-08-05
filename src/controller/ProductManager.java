@@ -79,8 +79,6 @@ public class ProductManager {
                 if (pattern.matcher(str).find()){
                     System.out.println("Date is ok");
                     return str;
-                }else {
-                    System.err.println("Date is not ok");
                 }
             }
         } catch (Exception e) {

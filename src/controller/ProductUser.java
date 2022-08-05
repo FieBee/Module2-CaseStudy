@@ -13,7 +13,6 @@ public class ProductUser {
 
 
     public void addProductToCart(Products product){
-
         cart.add(product);
         readWriteData.writeData(cart, CART_MANAGEMENT);
     }
@@ -23,13 +22,11 @@ public class ProductUser {
         readWriteData.writeData(cart, CART_MANAGEMENT);
     }
 
-
-
     public int cartPayment(){
         cart = readWriteData.readData(CART_MANAGEMENT);
         int sum = 0;
-        for (int i = 0; i < cart.size(); i++) {
-            sum += cart.get(i).getCost();
+        for (Products products : cart) {
+            sum += products.getCost();
         }
         return sum;
     }
@@ -38,9 +35,4 @@ public class ProductUser {
         return cart;
     }
 
-    public void writeBill(){
-        for (int i = 0; i < cart.size(); i++) {
-
-        }
-    }
 }

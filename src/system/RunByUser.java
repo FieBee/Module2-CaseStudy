@@ -14,6 +14,7 @@ import java.util.Scanner;
 import static controller.ProductManager.PRODUCT_MANAGEMENT;
 
 public class RunByUser {
+
     private static RunByUser instance = null;
     private RunByUser() {
     }
@@ -40,13 +41,13 @@ public class RunByUser {
 
              System.out.println("--------------------------------------------------------------");
              System.out.println("╔============================================================╗");
-             System.out.println("║             ▂ ▃ ▅ ▆ █  HỆ THỐNG USER  █ ▆ ▅ ▃ ▂            ║");
+             System.out.println("║                            USER                            ║");
              System.out.println("╠============================================================╣");
-             System.out.println("║>[1]. Thêm sản phẩm vào giỏ hàng                            ║");
-             System.out.println("║>[2]. Xóa  sản phẩm khỏi giỏ hàng                           ║");
-             System.out.println("║>[3]. Kiểm tra giỏ hàng                                     ║");
-             System.out.println("║>[4]. Thanh toán                                            ║");
-             System.out.println("║>[0]. Đăng xuất                                             ║");
+             System.out.println("║  1. Thêm sản phẩm vào giỏ hàng                            ║");
+             System.out.println("║  2. Xóa  sản phẩm khỏi giỏ hàng                           ║");
+             System.out.println("║  3. Kiểm tra giỏ hàng                                     ║");
+             System.out.println("║  4. Thanh toán                                            ║");
+             System.out.println("║  0. Đăng xuất                                             ║");
              System.out.println("╚============================================================╝");
              selectOption = input.nextInt();
 
@@ -54,7 +55,9 @@ public class RunByUser {
 
                  case 0:
                      System.out.println("Bye!");
-                     return;
+                     Login login = new Login();
+                     login.menuLogin();
+                     break;
                  case 1:
                      addProduct();
                      break;
@@ -84,7 +87,6 @@ public class RunByUser {
              e.getMessage();
          }
          readWriteFile.writeData(arrayList, ProductUser.CART_MANAGEMENT);
-
      }
 
      public void displayCart(){

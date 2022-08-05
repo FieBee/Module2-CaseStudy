@@ -32,11 +32,11 @@ public class Login {
     public void menuLogin() {
         do {
             System.out.println("╔============================================╗");
-            System.out.println("║   ▂ ▃ ▅ ▆ █     EIYOU SHOP    █ ▆ ▅ ▃ ▂    ║");
+            System.out.println("║                  EIYOU SHOP                ║");
             System.out.println("╠============================================╣");
-            System.out.println("║>[1]. Đăng nhập                             ║");
-            System.out.println("║>[2]. Đăng ký tài khoản                     ║");
-            System.out.println("║>[0]. Thoát                                 ║");
+            System.out.println("║  1. Đăng nhập                              ║");
+            System.out.println("║  2. Đăng ký tài khoản                      ║");
+            System.out.println("║  0. Thoát                                  ║");
             System.out.println("╚============================================╝");
             System.out.print("[\uD83D\uDC4B] Nhập lựa chọn: ");
             System.out.println("");
@@ -180,11 +180,10 @@ public class Login {
     public String checkPhoneNumber() {
         String phoneNumber;
         while (true) {
-            System.out.print("┠ ▹ Nhập số điện thoại: ");
+            System.out.print("┠ ▹ Nhập số điện thoại (10 số): ");
             String phone = scanner.nextLine();
             if (!validate.validatePhone(phone)) {
                 System.out.println("[❌] Số điện thoại không hợp lệ !!!");
-                System.out.println(">[Chú ý]: Số điện thoại phải có 10 số: ");
                 System.out.println("------------------------------------------");
             } else {
                 phoneNumber = phone;
