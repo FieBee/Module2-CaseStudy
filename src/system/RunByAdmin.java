@@ -340,7 +340,7 @@ public class RunByAdmin {
             Scanner input = new Scanner(System.in);
             System.out.println("Nhập id sản phẩm muốn xóa");
             int index = input.nextInt();
-            productManager.deleteProductByIndex(index);
+            productManager.deleteProduct(index);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

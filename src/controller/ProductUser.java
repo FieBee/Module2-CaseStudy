@@ -6,18 +6,18 @@ import storage.ReadWriteFile;
 
 import java.util.ArrayList;
 
-public class ProductUser {
+public class ProductUser implements ProductDAO{
     private ReadWriteData readWriteData = ReadWriteFile.getInstance();
     private ArrayList<Products> cart = readWriteData.readData(CART_MANAGEMENT);
     public static final String CART_MANAGEMENT = "FileData/CartManagement.phuong";
 
 
-    public void addProductToCart(Products product){
+    public void addProduct(Products product){
         cart.add(product);
         readWriteData.writeData(cart, CART_MANAGEMENT);
     }
 
-    public void deleteProductByIndex(int index){
+    public void deleteProduct(int index){
         cart.remove(index);
         readWriteData.writeData(cart, CART_MANAGEMENT);
     }
@@ -31,8 +31,5 @@ public class ProductUser {
         return sum;
     }
 
-    public ArrayList<Products> getCart() {
-        return cart;
-    }
 
 }

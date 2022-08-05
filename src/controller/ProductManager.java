@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class ProductManager {
+public class ProductManager implements ProductDAO{
     private static ProductManager instance = null;
     private ProductManager() {
     }
@@ -28,11 +28,13 @@ public class ProductManager {
 
 
 
+
     public void addProduct(Products product){
         productsList.add(product);
         readWriteFile.writeData(productsList, PRODUCT_MANAGEMENT);
     }
 
+//    @Override
     public void editProductByIndex(int index, Products product){
         System.out.println(productsArrayList.size());
         ArrayList<Products> productsArrayList = readWriteFile.readData(PRODUCT_MANAGEMENT);
@@ -41,7 +43,8 @@ public class ProductManager {
         Products.stt++;
     }
 
-    public void deleteProductByIndex(int index){
+    @Override
+    public void deleteProduct(int index){
         ArrayList<Products> productsArrayList = readWriteFile.readData(PRODUCT_MANAGEMENT);
         System.out.println("Xóa thành công:  "+ productsArrayList.get(index));
         productsArrayList.remove(index);
@@ -49,6 +52,7 @@ public class ProductManager {
         readWriteFile.writeData(productsArrayList,  PRODUCT_MANAGEMENT);
     }
 
+//    @Override
     public void displayProduct(){
         count=0;
         ArrayList<Products> displayFile = readWriteFile.readData(PRODUCT_MANAGEMENT);
